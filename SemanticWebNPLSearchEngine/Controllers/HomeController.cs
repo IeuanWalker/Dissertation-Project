@@ -39,7 +39,14 @@ namespace SemanticWebNPLSearchEngine.Controllers
             //Run the search method if user has search for an item i.e. id isn't null
             if (!String.IsNullOrEmpty(searchQuery.Trim()))
             {
-                await UserSearch.searchAsync(searchQuery);
+                if (!String.IsNullOrEmpty(searchQuery.Trim()))
+                {
+                    await UserSearch.searchAsync(searchQuery);
+                }
+                else
+                {
+                    Response.Redirect("Index");
+                }
             }
             else
             {

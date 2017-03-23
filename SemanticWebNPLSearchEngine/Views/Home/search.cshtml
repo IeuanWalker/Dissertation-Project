@@ -11,7 +11,7 @@
 }
 else
 {
-    <table>
+    <table class="table">
         <tr>
             <th>Title</th>
             <th>Genre</th>
@@ -22,7 +22,16 @@ else
         {
             <tr>
                 <td>@item.Title</td>
-                <td>@item.Genre</td>
+                <td>
+                    @if (@item.Genre == "")
+                    {
+                        <div>n/a</div>
+                    }
+                    else
+                    {
+                        @item.Genre
+                    }
+                </td>
                 <td>@item.ReleaseDate</td>
                 <td>@item.LastUpdated</td>
             </tr>

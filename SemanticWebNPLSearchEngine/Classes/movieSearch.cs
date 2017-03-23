@@ -84,9 +84,16 @@ namespace SemanticWebNPLSearchEngine.Classes
             {
                 string movieLink = result["movieLink"].ToString();
                 string title = result["title"].ToString();
-                string genreLink = String.IsNullOrEmpty(result["genreLink"].ToString()) ? "" : result["genreLink"].ToString();
-                string genre = String.IsNullOrEmpty(result["genre"].ToString()) ? "" : result["genre"].ToString();
-
+                string genreLink = "";
+                if (!(result["genreLink"] == null))
+                {
+                    genreLink = result["genreLink"].ToString();
+                }
+                string genre = "";
+                if (!(result["genre"] == null))
+                {
+                    genre = result["genre"].ToString();
+                }
                 string releaseDate = "";
                 if (!(result["releaseDate"] == null))
                 {
