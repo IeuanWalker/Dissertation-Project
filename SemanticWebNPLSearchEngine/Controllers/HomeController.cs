@@ -50,7 +50,7 @@ namespace SemanticWebNPLSearchEngine.Controllers
             searchResult = searchResult.Where(s => s.SearchedFor.Equals(searchQuery));
 
             ViewBag.searchString = searchQuery;
-            //asdas
+
             return View(searchResult);
         }
     }

@@ -11,42 +11,6 @@ namespace SemanticWebNPLSearchEngine.Classes
 {
     public class utilities
     {
-        public static string Query()
-        {
-            string query =
-                "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
-                "PREFIX db: < http://dbpedia.org/ontology/> " +
-                "PREFIX prop: < http://dbpedia.org/property/> " +
-                "SELECT? movieLink ?title? genreLink ?genre? releaseDate WHERE { " +
-                    "?movieLink rdf:type db:Film; " +
-                               "foaf: name? title. " +
-                    "OPTIONAL{ " +
-                        "?movieLink prop:genre? genreLink. " +
-                        "?genreLink dbp:name? genre " +
-                    "}. " +
-                    "OPTIONAL{?movieLink < http://dbpedia.org/ontology/releaseDate> ?releaseDate}. " +
-
-                    "FILTER(regex(str(?title), 'red', 'i')) " +
-                    "FILTER(lang(?title) = 'en') " +
-                "} " +
-                "ORDER BY DESC(?releaseDate) ";
-
-            return query;
-        }
-
-        //Method to Query Dbpedia and return a Sparql Result set
-        public static SparqlResultSet QueryDbpedia(string query)
-        {
-            //Define a remote endpoint
-            //Use the DBPedia SPARQL endpoint with the default Graph set to DBPedia
-            SparqlRemoteEndpoint endpoint = new SparqlRemoteEndpoint(new Uri("http://dbpedia.org/sparql"), "http://dbpedia.org");
-
-            //Make a SELECT query against the Endpoint
-            SparqlResultSet results = endpoint.QueryWithResultSet(query);
-
-            return results;
-        }
-
         public static async Task<LuisJSONModel> callLuisAsync(string Query)
         {
             LuisJSONModel Data = new LuisJSONModel();
@@ -72,51 +36,50 @@ namespace SemanticWebNPLSearchEngine.Classes
             return Data;
         }
 
-        public static string extractLuisData(LuisJSONModel luisJSON)
+        public static string extractLuisData(LuisJSONModel luisJson)
         {
             int numberOfItems = 0;
             string genre = "";
             int year = 0;
             string exactDate = "";
 
-            foreach (var i in luisJSON.entities)
+            foreach (var i in luisJson.entities)
             {
                 switch (i.type)
                 {
                     case "builtin.number":
                         if (int.TryParse(i.resolution.value, out int number))
                         {
-                            if (numberOfItems < 1000)
+                            if (number < 1000)
                             {
-                                number = numberOfItems;
+                                numberOfItems = number;
                             }
                         }
                         break;
 
                     case "genre":
-                        genre = i.resolution.value;
+                        genre = i.entity;
                         break;
 
                     case "builtin.datetime.date":
-                        if (DateTime.TryParse(i.resolution.value, out DateTime exactDateTime))
+                        if (DateTime.TryParse(i.entity, out DateTime exactDateTime))
                         {
                             exactDate = exactDateTime.ToString();
                         }
-                        else if (int.TryParse(i.resolution.value, out int yearDateTime) && (i.resolution.value.Length == 4))
+                        else if (int.TryParse(i.entity, out int yearDateTime) && (i.entity.Length == 4))
                         {
                             year = yearDateTime;
                         }
                         break;
                 }
             }
-
-            return createSparqlQuery(numberOfItems, genre, year, exactDate);
+            return CreateSparqlQuery(numberOfItems, genre, year, exactDate);
         }
 
-        private static string createSparqlQuery(int numberOfItems, string genre, int year, string exactDate)
+        private static string CreateSparqlQuery(int numberOfItems, string genre, int year, string exactDate)
         {
             string limit = numberOfItems > 0 ? String.Format("LIMIT({0})", numberOfItems) : "";
-            string genreMatch = String.IsNullOrEmpty(genre.Trim()) ? String.Format("FILTER ( regex (str(?genre), '{0}', 'i'))", genre) : "";
+            string genreMatch = String.IsNullOrEmpty(genre.Trim()) ? "" : String.Format("FILTER ( regex (str(?genre), '{0}', 'i'))", genre);
             string dateMatch = "";
 
             if (exactDate.Equals(DateTime.Now) && year.Equals(0))
@@ -150,10 +113,23 @@ namespace SemanticWebNPLSearchEngine.Classes
                     "FILTER(lang(?title) = 'en') " +
                 "}}" +
                 "ORDER BY DESC(?releaseDate)" +
-                "{2}" +
-                "LIMIT(10)";
+                "{2}";
+
             Debug.WriteLine(String.Format(queryPattern, genreMatch, dateMatch, limit));
             return String.Format(queryPattern, genreMatch, dateMatch, limit);
+        }
+
+        //Method to Query Dbpedia and return a Sparql Result set
+        public static SparqlResultSet QueryDbpedia(string query)
+        {
+            //Define a remote endpoint
+            //Use the DBPedia SPARQL endpoint with the default Graph set to DBPedia
+            SparqlRemoteEndpoint endpoint = new SparqlRemoteEndpoint(new Uri("http://dbpedia.org/sparql"), "http://dbpedia.org");
+
+            //Make a SELECT query against the Endpoint
+            SparqlResultSet results = endpoint.QueryWithResultSet(query);
+
+            return results;
         }
     }
 }
