@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+@* lang - The language of the page. *@
+@* no-js - The no JavaScript class is removed by modernizr if JavaScript is available. *@
+<html class="no-js" lang="en">
+<head>
+    @* The order of the tags in the head is important for best performance and compatibility. *@
+    @* charset - The character encoding of the document. *@
+    <meta charset="utf-8">
+    @* viewport - Set the scale on mobile devices (For more info see https://developer.mozilla.org/en/docs/Mozilla/Mobile/Viewport_meta_tag). *@
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    @* title - The title of the page which appears in the browser window title. Aim for the title to be less than 70
+        characters. The site name appears at the end for better SEO. *@
+    <title>@ViewBag.Title - NPL Semantic Search Engine</title>
+
+    @* theme-color - The colour of the toolbar in Chrome M39+
+        See http://updates.html5rocks.com/2014/11/Support-for-theme-color-in-Chrome-39-for-Android *@
+    <meta name="theme-color" content="#000">
+
+    @* Custom Fonts - If you are using custom fonts. Consider using the Google Web Fonts Loader in async mode.
+        See https://github.com/typekit/webfontloader. *@
+    @Styles.Render("~/Content/css")
+    <meta name="x-font-awesome-stylesheet-fallback-test" class="fa">
+    @Styles.Render("~/Content/fa")
+    @Scripts.Render("~/bundles/modernizr")
+
+    @* Description - Used by search engines. Aim for more than 160 characters. *@
+    <meta name="description" content="The is a semantic web search engine that uses Natural Language processing as part of my dissertation at Cardiff Metropolitan University">
+    @* Author - Used by search engines. The author of the page. *@
+    <meta name="author" content="Ieuan Walker">
+
+    @* You can use the head section to render additional meta tags. *@
+    @RenderSection("head", required: false)
+</head>
+<body>
+    @RenderBody()
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/jqueryvalunobtrusive")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/myScripts")
+    @Scripts.Render("~/bundles/site")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

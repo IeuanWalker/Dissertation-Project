@@ -1,0 +1,33 @@
+﻿@model IEnumerable<SemanticWebNPLSearchEngine.Models.MovieUserSearch>
+
+@{
+    ViewBag.Title = "search";
+}
+<h1></h1>
+
+@if (Model == null)
+{
+    <p>Sorry no results</p>
+}
+else
+{
+    <table>
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+            <th>Last Updated</th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Title</td>
+                <td>@item.Genre</td>
+                <td>@item.ReleaseDate</td>
+                <td>@item.LastUpdated</td>
+            </tr>
+        }
+    </table>
+}
+
+<!-- https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/3be59567-f1ac-4de2-b94f-842510222b38?subscription-key=6ce4cdc3b80544b897b2b087bcf376cd&verbose=true&q=10%20films%20from%202010 -->
