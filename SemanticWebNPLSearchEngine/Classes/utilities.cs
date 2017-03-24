@@ -11,7 +11,8 @@ namespace SemanticWebNPLSearchEngine.Classes
 {
     public class utilities
     {
-        public static async Task<LuisJSONModel> callLuisAsync(string Query)
+        //Method to query the Luis.ai
+        public static async Task<LuisJSONModel> CallLuisAsync(string Query)
         {
             LuisJSONModel Data = new LuisJSONModel();
             using (HttpClient client = new HttpClient())
@@ -36,7 +37,8 @@ namespace SemanticWebNPLSearchEngine.Classes
             return Data;
         }
 
-        public static string extractLuisData(LuisJSONModel luisJson)
+        //Method to extract data from the Luis.ai JSON file
+        public static string ExtractLuisData(LuisJSONModel luisJson)
         {
             int numberOfItems = 0;
             string genre = "";
@@ -76,6 +78,7 @@ namespace SemanticWebNPLSearchEngine.Classes
             return CreateSparqlQuery(numberOfItems, genre, year, exactDate);
         }
 
+        //Method to create custom SPARQL query
         private static string CreateSparqlQuery(int numberOfItems, string genre, int year, string exactDate)
         {
             string limit = numberOfItems > 0 ? String.Format("LIMIT({0})", numberOfItems) : "";
@@ -131,45 +134,27 @@ namespace SemanticWebNPLSearchEngine.Classes
 
             return results;
         }
+
+        //Method to remove the @en at the end of strings
+        public static string RemoveLast3Cahracters(string word)
+        {
+            if (word.Length > 3)
+            {
+                word = word.Substring(0, word.Length - 3);
+            }
+            return word;
+        }
+
+        //Method to return just the date
+        public static string DateCreator(string word)
+        {
+            if (!(word == null || word == ""))
+            {
+                int index = word.IndexOf("^", StringComparison.Ordinal);
+                word = word.Substring(0, index);
+            }
+
+            return word;
+        }
     }
 }
-
-//PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
-//PREFIX db: <http://dbpedia.org/ontology/>
-//PREFIX prop: <http://dbpedia.org/property/>
-//SELECT ?movieLink ?title ?genreLink ?genre ?releaseDate
-//WHERE {
-//    ?movieLink rdf:type db:Film;
-//               foaf:name ?title.
-//    OPTIONAL { ?movieLink prop:genre ?genreLink.
-//               ?genreLink rdfs:label ?genre.
-//               FILTER(lang(?genre) = 'en') }.
-//    OPTIONAL{ ?movieLink <http://dbpedia.org/ontology/releaseDate> ?releaseDate }.
-
-//    FILTER(lang(?title) = 'en')
-//    FILTER((?releaseDate >= '2010-01-01'^^xsd:date) && (?releaseDate < '2010-12-31'^^xsd:date))
-//}
-//ORDER BY DESC(?releaseDate)
-//LIMIT(100)
-
-//string query = String.Format(
-//                    "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
-//                    "PREFIX db: <http://dbpedia.org/ontology/> " +
-//                    "PREFIX prop: < http://dbpedia.org/property/> " +
-//                    "SELECT? movieLink ?title? genreLink ?genre? releaseDate " +
-//                    "WHERE { " +
-//                        "?movieLink rdf:type db:Film; " +
-//                                   "foaf:name ?title. " +
-//                        "OPTIONAL { ?movieLink prop:genre ?genreLink. " +
-//                                   "?genreLink rdfs:label ?genre. " +
-//                                   "FILTER(lang(?genre) = 'en') }. " +
-//                        "OPTIONAL{ ?movieLink <http://dbpedia.org/ontology/releaseDate> ?releaseDate }. " +
-
-//                        "{0}" +
-//                        "{1}" +
-//                        "FILTER(lang(?title) = 'en') " +
-//                    "}" +
-//                    "ORDER BY DESC(?releaseDate)" +
-//                    "{2}"
-//                    , genreMatch, dateMatch, limit
-//                 );

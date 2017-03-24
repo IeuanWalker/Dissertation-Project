@@ -1,42 +1,49 @@
-﻿@model IEnumerable<SemanticWebNPLSearchEngine.Models.MovieUserSearch>
+﻿@model PagedList.IPagedList<SemanticWebNPLSearchEngine.Models.MovieUserSearch>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "search";
 }
 <h1></h1>
 
-@if (Model == null)
-{
-    <p>Sorry could'nt find results for <strong>@ViewBag.Title</strong></p>
-}
-else
-{
-    <P>We found <strong>@Model.Count()</strong> for <strong>@ViewBag.searchString</strong></P>
-    <p>Last updated: </p>
-    <table class="table">
-        <tr>
-            <th>Title</th>
-            <th>Genre</th>
-            <th>Release Date</th>
-        </tr>
-        @foreach (var item in Model)
-        {
+<div class="container">
+    @if (Model == null || Model.TotalItemCount <= 0)
+    {
+        <p>Sorry could'nt find results for <strong>@ViewBag.searchString</strong></p>
+    }
+    else
+    {
+        <P>We found <strong>@Model.TotalItemCount</strong> for <strong>@ViewBag.searchString</strong></P>
+        <p>Last updated: </p>
+        <table class="table">
             <tr>
-                <td>@item.Title</td>
-                <td>
-                    @if (@item.Genre == "")
-                    {
-                        <div>n/a</div>
-                    }
-                    else
-                    {
-                        @item.Genre
-                    }
-                </td>
-                <td>@item.ReleaseDate</td>
+                <th>Title</th>
+                <th>Genre</th>
+                <th>Release Date</th>
             </tr>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>
+                        @if (@item.Genre == "")
+                    {
+                            <div>n/a</div>
+                        }
+                        else
+                        {
+                            @item.Genre
+                        }
+                    </td>
+                    <td>@item.ReleaseDate</td>
+                </tr>
+            }
+        </table>
+        if (@Model.Count() < @Model.TotalItemCount)
+        {
+            @Html.PagedListPager(Model, page => Url.Action("search", new { page, pageSize = Model.PageSize }))
         }
-    </table>
-}
+    }
+</div>
 
 <!-- https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/3be59567-f1ac-4de2-b94f-842510222b38?subscription-key=6ce4cdc3b80544b897b2b087bcf376cd&verbose=true&q=10%20films%20from%202010 -->

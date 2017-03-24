@@ -67,9 +67,9 @@ namespace SemanticWebNPLSearchEngine.Classes
         private async Task gatherNewDataAsync(string query)
         {
             //Luis.ai report
-            LuisJSONModel LuisJSON = await utilities.callLuisAsync(query);
+            LuisJSONModel LuisJSON = await utilities.CallLuisAsync(query);
             //Create Sparql query from luis report
-            string sparqlQuery = utilities.extractLuisData(LuisJSON);
+            string sparqlQuery = utilities.ExtractLuisData(LuisJSON);
 
             //Dbpedia data
             SparqlResultSet resultSetMovieSearch = utilities.QueryDbpedia(sparqlQuery);
@@ -83,7 +83,7 @@ namespace SemanticWebNPLSearchEngine.Classes
             foreach (SparqlResult result in resultSet)
             {
                 string movieLink = result["movieLink"].ToString();
-                string title = result["title"].ToString();
+                string title = utilities.RemoveLast3Cahracters(result["title"].ToString());
                 string genreLink = "";
                 if (!(result["genreLink"] == null))
                 {
@@ -92,12 +92,12 @@ namespace SemanticWebNPLSearchEngine.Classes
                 string genre = "";
                 if (!(result["genre"] == null))
                 {
-                    genre = result["genre"].ToString();
+                    genre = utilities.RemoveLast3Cahracters(result["genre"].ToString());
                 }
                 string releaseDate = "";
                 if (!(result["releaseDate"] == null))
                 {
-                    releaseDate = result["releaseDate"].ToString();
+                    releaseDate = utilities.DateCreator(result["releaseDate"].ToString());
                 }
 
                 AddToDatabase(searchString, movieLink, title, genreLink, genre, releaseDate);

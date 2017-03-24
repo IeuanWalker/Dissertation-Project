@@ -1,6 +1,9 @@
-﻿using SemanticWebNPLSearchEngine.Classes;
+﻿using PagedList;
+using SemanticWebNPLSearchEngine.Classes;
 using SemanticWebNPLSearchEngine.Models;
 using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -34,7 +37,7 @@ namespace SemanticWebNPLSearchEngine.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Search(string searchQuery)
+        public async Task<ActionResult> Search(string searchQuery, int page = 1, int pageSize = 10)
         {
             //Run the search method if user has search for an item i.e. id isn't null
             if (!String.IsNullOrEmpty(searchQuery))
@@ -52,13 +55,18 @@ namespace SemanticWebNPLSearchEngine.Controllers
             {
                 Response.Redirect("Index");
             }
+            ViewBag.searchString = searchQuery;
 
             var searchResult = from b in db.movieUserSearchTable select b;
             searchResult = searchResult.Where(s => s.SearchedFor.Equals(searchQuery));
 
-            ViewBag.searchString = searchQuery;
+            //Create a list
+            IEnumerable<MovieUserSearch> movieList = await searchResult.OrderByDescending(s => s.LastUpdated).ToListAsync();
 
-            return View(searchResult);
+            //Using pagedList package to add pagination
+            PagedList<MovieUserSearch> model = new PagedList<MovieUserSearch>(movieList, page, pageSize);
+
+            return View(model);
         }
     }
 }
