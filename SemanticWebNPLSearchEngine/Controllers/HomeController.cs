@@ -4,6 +4,7 @@ using SemanticWebNPLSearchEngine.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
@@ -44,7 +45,13 @@ namespace SemanticWebNPLSearchEngine.Controllers
             {
                 if (!String.IsNullOrEmpty(searchQuery.Trim()))
                 {
+                    var watch = Stopwatch.StartNew();
                     await UserSearch.searchAsync(searchQuery);
+                    watch.Stop();
+
+                    Console.WriteLine("TIMER");
+                    Console.WriteLine(watch);
+                    Console.WriteLine("TIMER");
                 }
                 else
                 {
