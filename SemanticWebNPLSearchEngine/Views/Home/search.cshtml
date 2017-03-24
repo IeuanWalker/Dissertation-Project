@@ -7,16 +7,17 @@
 
 @if (Model == null)
 {
-    <p>Sorry no results</p>
+    <p>Sorry could'nt find results for <strong>@ViewBag.Title</strong></p>
 }
 else
 {
+    <P>We found <strong>@Model.Count()</strong> for <strong>@ViewBag.searchString</strong></P>
+    <p>Last updated: </p>
     <table class="table">
         <tr>
             <th>Title</th>
             <th>Genre</th>
             <th>Release Date</th>
-            <th>Last Updated</th>
         </tr>
         @foreach (var item in Model)
         {
@@ -33,7 +34,6 @@ else
                     }
                 </td>
                 <td>@item.ReleaseDate</td>
-                <td>@item.LastUpdated</td>
             </tr>
         }
     </table>
