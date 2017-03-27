@@ -14,7 +14,7 @@
     else
     {
         <P>We found <strong>@Model.TotalItemCount</strong> for <strong>@ViewBag.searchString</strong></P>
-        <p>Last updated: </p>
+        <p>Last updated: @Model.ElementAt(0).LastUpdated</p>
         <table class="table">
             <tr>
                 <th>Title</th>
