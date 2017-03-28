@@ -49,7 +49,7 @@ namespace SemanticWebNPLSearchEngine.Controllers
                     await UserSearch.searchAsync(searchQuery);
                     watch.Stop();
 
-                    Console.WriteLine("TIMER");
+
                     Console.WriteLine(watch);
                     Console.WriteLine("TIMER");
                 }
