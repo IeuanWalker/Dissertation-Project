@@ -24,18 +24,27 @@
             @foreach (var item in Model)
             {
                 <tr>
-                    <td>@item.Title</td>
+                    <td><a href="@item.MovieLink" target="_blank">@item.Title</a></td>
                     <td>
                         @if (@item.Genre == "")
-                    {
+                        {
                             <div>n/a</div>
                         }
                         else
                         {
-                            @item.Genre
+                            <a href="@item.GenreLink" target="_blank">@item.Genre</a>
                         }
                     </td>
-                    <td>@item.ReleaseDate</td>
+                    <td>
+                        @if (@item.ReleaseDate == "")
+                        {
+                            <div>n/a</div>
+                        }
+                        else
+                        {
+                            @item.ReleaseDate
+                        }
+                    </td>
                 </tr>
             }
         </table>
