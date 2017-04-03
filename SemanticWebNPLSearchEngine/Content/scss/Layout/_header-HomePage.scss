@@ -41,57 +41,6 @@
     }
 }
 
-.beta {
-    font-size: 15px;
-    line-height: 1.5em;
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
-    padding: 0 20px;
-    text-align: center;
-    color: #fff;
-    border: 2px solid #fff;
-    border-radius: 200px;
-}
-
-.header-footer {
-    z-index: 2;
-            flex-direction: row-reverse;
-
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: reverse;
-        -ms-flex-direction: row-reverse;
-    nav {
-        ul {
-            display: -webkit-box;
-            display: -ms-flexbox;
-            display: flex;
-            list-style-type: none;
-
-            -webkit-box-align: center;
-                -ms-flex-align: center;
-                    align-items: center;
-            li {
-                a {
-                    font-family: 'Source Sans Pro', sans-serif;
-                    font-size: 18px;
-                    position: relative;
-                    display: inline-block;
-                    overflow: hidden;
-                    margin: 0 10px;
-                    padding: 8px 8px;
-                    text-align: none;
-                    text-decoration: none;
-                    text-transform: uppercase;
-                    color: #fff;
-                    outline: none;
-                }
-            }
-        }
-    }
-}
-
 .js-Connectors {
     position: absolute;
     z-index: 0;

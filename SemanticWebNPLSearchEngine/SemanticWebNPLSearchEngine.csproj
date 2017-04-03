@@ -480,7 +480,6 @@
     <Content Include="Content\fonts\WalkonFire.ttf" />
     <Content Include="Content\scss\Base\_base.scss" />
     <Content Include="Content\scss\Base\_typography.scss" />
-    <Content Include="Content\scss\Components\_hoverEffects.scss" />
     <Content Include="Content\scss\Components\_logo.scss" />
     <Content Include="Content\scss\Components\_navigation.scss" />
     <Content Include="Content\scss\Helpers\_functions.scss" />
@@ -532,9 +531,7 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Home\LearnMore.cshtml" />
     <Content Include="Views\Home\search.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_LayoutHomePage.cshtml" />

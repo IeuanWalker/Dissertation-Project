@@ -7,23 +7,12 @@
 <header class="homePage-header">
     <div class="row-fluid">
         <div class="col-xs-12">
-            <div class="beta">Beta</div>
             <div class="search-content">
                 @Html.Partial("_Logo")
                 @Html.Partial("_SearchForm")
-                <p>Created by <strong>Ieuan Walker</strong> as part of my dissertation at <strong>Cardiff Metropolitan University</strong></p>
+                <p>Created by <a href="https://www.linkedin.com/in/ieuanwalker/" target="_blank"><strong>Ieuan Walker</strong></a> as part of my dissertation at <a href="#" target="_blank"><strong>Cardiff Metropolitan University</strong></a></p>
             </div>
         </div>
-    </div>
-    <div class="row-fluid header-footer">
-        <nav class="pull-right">
-            <ul>
-                <li></li>
-                <li><a href="@Url.Action("About", "home")" class="hover-effect"><span data-letters="About">About</span></a></li>
-                <li><a href="@Url.Action("LearnMore", "home")" class="hover-effect"><span data-letters="learn more">Learn more</span></a></li>
-                <li><a href="#" data-toggle="tooltip" title="How to use this site"><i class="fa fa-question-circle" aria-hidden="true"></i></a></li>
-            </ul>
-        </nav>
     </div>
     <canvas id="header-connectors" class="js-Connectors"></canvas>
 </header>

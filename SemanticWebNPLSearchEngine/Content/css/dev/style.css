@@ -315,8 +315,8 @@ th {
 }
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: url(../../fonts/bootstrap/glyphicons-halflings-regular.eot?1487103049);
-  src: url(../../fonts/bootstrap/glyphicons-halflings-regular.eot?&1487103049#iefix) format("embedded-opentype"), url(../../fonts/bootstrap/glyphicons-halflings-regular.woff2?1487103049) format("woff2"), url(../../fonts/bootstrap/glyphicons-halflings-regular.woff?1487103049) format("woff"), url(../../fonts/bootstrap/glyphicons-halflings-regular.ttf?1487103049) format("truetype"), url(../../fonts/bootstrap/glyphicons-halflings-regular.svg?1487103049#glyphicons_halflingsregular) format("svg");
+  src: url(../../fonts/bootstrap/glyphicons-halflings-regular.eot?1491089070);
+  src: url(../../fonts/bootstrap/glyphicons-halflings-regular.eot?&1491089070#iefix) format("embedded-opentype"), url(../../fonts/bootstrap/glyphicons-halflings-regular.woff2?1491089070) format("woff2"), url(../../fonts/bootstrap/glyphicons-halflings-regular.woff?1491089070) format("woff"), url(../../fonts/bootstrap/glyphicons-halflings-regular.ttf?1491089070) format("truetype"), url(../../fonts/bootstrap/glyphicons-halflings-regular.svg?1491089070#glyphicons_halflingsregular) format("svg");
 }
 .glyphicon {
   position: relative;
@@ -7524,51 +7524,6 @@ footer .copy-footer {
   flex: 1;
 }
 
-.beta {
-  font-size: 15px;
-  line-height: 1.5em;
-  position: absolute;
-  top: 0;
-  right: 0;
-  margin: 10px;
-  padding: 0 20px;
-  text-align: center;
-  color: #fff;
-  border: 2px solid #fff;
-  border-radius: 200px;
-}
-
-.header-footer {
-  z-index: 2;
-  flex-direction: row-reverse;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: reverse;
-  -ms-flex-direction: row-reverse;
-}
-.header-footer nav ul {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  list-style-type: none;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-}
-.header-footer nav ul li a {
-  font-family: 'Source Sans Pro', sans-serif;
-  font-size: 18px;
-  position: relative;
-  display: inline-block;
-  overflow: hidden;
-  margin: 0 10px;
-  padding: 8px 8px;
-  text-align: none;
-  text-decoration: none;
-  text-transform: uppercase;
-  color: #fff;
-  outline: none;
-}
-
 .js-Connectors {
   position: absolute;
   z-index: 0;
@@ -7672,6 +7627,9 @@ footer .copy-footer {
   color: #fff;
   text-align: center;
 }
+.search-content p a {
+  color: #fff;
+}
 
 .search-results {
   position: relative;
@@ -7685,57 +7643,6 @@ footer .copy-footer {
   margin-bottom: 60px;
   background-color: #fff;
   box-shadow: 0 0 15px #888;
-}
-
-.hover-effect:hover {
-  color: #fff;
-}
-
-.hover-effect::after {
-  position: absolute;
-  z-index: -1;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  content: '';
-  -webkit-transition: -webkit-transform .5s;
-  transition: -webkit-transform .5s;
-  transition: transform .5s;
-  transition: transform .5s, -webkit-transform .5s;
-  -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-  -webkit-transform: translate3d(101%, 0, 0);
-  transform: translate3d(101%, 0, 0);
-  background: #fff;
-}
-
-.hover-effect:hover::after {
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
-
-.hover-effect span {
-  position: relative;
-  display: block;
-}
-
-.hover-effect span::before {
-  position: absolute;
-  left: 0;
-  overflow: hidden;
-  width: 0;
-  content: attr(data-letters);
-  -webkit-transition: width .5s;
-  transition: width .5s;
-  -webkit-transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-  transition-timing-function: cubic-bezier(0.7, 0, 0.3, 1);
-  white-space: nowrap;
-  color: #000;
-}
-
-.hover-effect:hover span::before {
-  width: 100%;
 }
 
 .logo a {

@@ -24,21 +24,7 @@ namespace SemanticWebNPLSearchEngine.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "About the project";
-
-            return View();
-        }
-
-        public ActionResult LearnMore()
-        {
-            ViewBag.Message = "Technical aspects and more details about the project";
-
-            return View();
-        }
-
-        public async Task<ActionResult> Search(string searchQuery, int page = 1, int pageSize = 10)
+        public async Task<ActionResult> Search(string searchQuery)
         {
             //Run the search method if user has search for an item i.e. id isn't null
             if (!String.IsNullOrEmpty(searchQuery))
@@ -68,10 +54,7 @@ namespace SemanticWebNPLSearchEngine.Controllers
             searchResult = searchResult.Where(s => s.SearchedFor.Equals(searchQuery));
 
             //Create a list
-            IEnumerable<MovieUserSearch> movieList = await searchResult.OrderByDescending(s => s.LastUpdated).ToListAsync();
-
-            //Using pagedList package to add pagination
-            PagedList<MovieUserSearch> model = new PagedList<MovieUserSearch>(movieList, page, pageSize);
+            IEnumerable<MovieUserSearch> model = await searchResult.OrderByDescending(s => s.LastUpdated).ToListAsync();
 
             return View(model);
         }

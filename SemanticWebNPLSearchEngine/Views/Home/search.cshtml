@@ -1,4 +1,4 @@
-﻿@model PagedList.IPagedList<SemanticWebNPLSearchEngine.Models.MovieUserSearch>
+﻿@model IEnumerable<SemanticWebNPLSearchEngine.Models.MovieUserSearch>
 @using PagedList.Mvc;
 
 @{
@@ -7,13 +7,13 @@
 <h1></h1>
 
 <div class="container">
-    @if (Model == null || Model.TotalItemCount <= 0)
+    @if (Model == null || Model.Count() <= 0)
     {
         <p>Sorry couldn't find results for <strong>@ViewBag.searchString</strong></p>
     }
     else
     {
-        <P>We found <strong>@Model.TotalItemCount</strong> for <strong>@ViewBag.searchString</strong></P>
+        <P>We found <strong>@Model.Count()</strong> for <strong>@ViewBag.searchString</strong></P>
         <p>Last updated: @Model.ElementAt(0).LastUpdated</p>
         <table class="table">
             <tr>
@@ -48,11 +48,5 @@
                 </tr>
             }
         </table>
-        if (@Model.Count() < @Model.TotalItemCount)
-        {
-            @Html.PagedListPager(Model, page => Url.Action("search", new { page, pageSize = Model.PageSize }))
-        }
     }
 </div>
-
-<!-- https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/3be59567-f1ac-4de2-b94f-842510222b38?subscription-key=6ce4cdc3b80544b897b2b087bcf376cd&verbose=true&q=10%20films%20from%202010 -->
