@@ -31,13 +31,13 @@ namespace SemanticWebNPLSearchEngine.Controllers
             {
                 if (!String.IsNullOrEmpty(searchQuery.Trim()))
                 {
-                    var watch = Stopwatch.StartNew();
+                    Stopwatch timer = Stopwatch.StartNew();
                     await UserSearch.searchAsync(searchQuery);
-                    watch.Stop();
+                    timer.Stop();
 
-                    Console.WriteLine("TIMER");
-                    Console.WriteLine(watch);
-                    Console.WriteLine("TIMER");
+                    Debug.WriteLine("TIMER");
+                    Debug.WriteLine(timer.ElapsedMilliseconds);
+                    Debug.WriteLine("TIMER");
                 }
                 else
                 {
