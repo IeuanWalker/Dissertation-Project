@@ -34,10 +34,7 @@ namespace SemanticWebNPLSearchEngine.Controllers
                     Stopwatch timer = Stopwatch.StartNew();
                     await UserSearch.searchAsync(searchQuery);
                     timer.Stop();
-
-                    Debug.WriteLine("TIMER");
                     Debug.WriteLine(timer.ElapsedMilliseconds);
-                    Debug.WriteLine("TIMER");
                 }
                 else
                 {
