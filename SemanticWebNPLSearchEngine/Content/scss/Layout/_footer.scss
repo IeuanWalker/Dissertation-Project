@@ -53,69 +53,35 @@ footer {
             span {
                 font-size: 12px;
                 letter-spacing: 15px;
-            } 
+            }
         }
     }
     .copy-footer {
         padding: 5px;
     }
 }
-.navigation {
-    display: block;
-    width: 100%;
-    padding: 5em;
-    span {
-        font-size: 14px;
-        display: block;
-        width: 100%;
-        margin-bottom: 20px;
-        padding: 9px 0;
-        -webkit-transition: opacity 0.4s;
-        transition: opacity 0.4s;
-        text-align: center;
-        text-transform: uppercase;
-        opacity:0.9;
-        color:#000;
-        background-color: #fff;
-        box-shadow: 0 0 3px rgba(0,0,0,0.3);
-        text-shadow: 0 1px rgba(0,0,0,0.1);
-    }
-    &:hover span, &:hover ul {
-        opacity:1;
-    }
-    ul {
-        list-style: none;
-        -webkit-transition: opacity 0.4s;
-        transition: opacity 0.4s;
-        text-align: center;
-        opacity: 0.9;
-        li {
-            padding: 5px 0;
-            a {
-                text-decoration: none;
-                color: #fff;
-            }
-        }
-    }
-}
 .footer-social {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width:100%;
-    font-size:25px;
-
+    width: 100%;
+    font-size: 25px;
     -ms-flex-flow: row nowrap;
-        flex-flow: row nowrap;
+    flex-flow: row nowrap;
     -ms-flex-pack: distribute;
-        justify-content: space-around;
+    justify-content: space-around;
     -webkit-box-align: center;
-        -ms-flex-align: center;
-            align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
 
-    .shareBtn{
+    .shareBtn {
+        background-color: transparent;
+        padding: 20px;
+        color: #fff;
+    }
+
+    .shareBtn:hover {
         background-color: #fff;
-        padding: 10px;
-        color:#000;
+        color: #000;
     }
 }
