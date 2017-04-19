@@ -7424,6 +7424,45 @@ footer .copy-footer {
   padding: 5px;
 }
 
+.navigation {
+  display: block;
+  width: 100%;
+  padding: 5em;
+}
+.navigation span {
+  font-size: 14px;
+  display: block;
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 9px 0;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+  text-align: center;
+  text-transform: uppercase;
+  opacity: 0.9;
+  color: #000;
+  background-color: #fff;
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  text-shadow: 0 1px rgba(0, 0, 0, 0.1);
+}
+.navigation:hover span, .navigation:hover ul {
+  opacity: 1;
+}
+.navigation ul {
+  list-style: none;
+  -webkit-transition: opacity 0.4s;
+  transition: opacity 0.4s;
+  text-align: center;
+  opacity: 0.9;
+}
+.navigation ul li {
+  padding: 5px 0;
+}
+.navigation ul li a {
+  text-decoration: none;
+  color: #fff;
+}
+
 .footer-social {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -7439,12 +7478,8 @@ footer .copy-footer {
   align-items: center;
 }
 .footer-social .shareBtn {
-  background-color: transparent;
-  padding: 20px;
-  color: #fff;
-}
-.footer-social .shareBtn:hover {
   background-color: #fff;
+  padding: 10px;
   color: #000;
 }
 
