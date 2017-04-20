@@ -1,5 +1,4 @@
-﻿using PagedList;
-using SemanticWebNPLSearchEngine.Classes;
+﻿using SemanticWebNPLSearchEngine.Classes;
 using SemanticWebNPLSearchEngine.Models;
 using System;
 using System.Collections.Generic;
