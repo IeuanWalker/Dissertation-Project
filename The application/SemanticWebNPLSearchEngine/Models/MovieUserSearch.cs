@@ -7,8 +7,10 @@ namespace SemanticWebNPLSearchEngine.Models
     {
         [Key]
         public int ID { get; set; }
+
         [Required]
         public string SearchedFor { get; set; }
+
         public string MovieLink { get; set; }
         public string Title { get; set; }
         public string GenreLink { get; set; }

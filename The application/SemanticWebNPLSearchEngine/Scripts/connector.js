@@ -1,6 +1,6 @@
 //https://codepen.io/florian/details/gAxtK
 
-$(document).ready(function(){ 
+$(document).ready(function(){
     dotGenerator(0, true);
     dotGenerator(1, false);
 });
@@ -13,7 +13,7 @@ function dotGenerator(i, linesOrNot) {
     canvas.width = canvas.offsetWidth;
     canvas.height = canvas.offsetHeight;
     canvas.style.display = 'block';
-    
+
     var ctx = canvas.getContext("2d");
     ctx.lineWidth = .2;
 
@@ -25,17 +25,17 @@ function dotGenerator(i, linesOrNot) {
         this.b = this.value(min);
         this.style = "rgba( 0, "+ this.g +","+ this.b +",0.3)";
     }
-  
+
     Color.prototype = {
         value: function(min) {
             return Math.floor(Math.random()*255 + min);
         }
     }
-    
+
     function mixComponents(comp1, comp2, weight1, weight2) {
         return (comp1*weight1 + comp2*weight2) / (weight1 + weight2);
-    }   
-    
+    }
+
     function gradient(dot1, dot2, midColor) {
         var grad = ctx.createLinearGradient(Math.floor(dot1.x), Math.floor(dot1.y), Math.floor(dot2.x), Math.floor(dot2.y));
         grad.addColorStop(0, dot1.color.style);
@@ -43,7 +43,7 @@ function dotGenerator(i, linesOrNot) {
         grad.addColorStop(1, dot2.color.style);
         return grad;
     }
-  
+
     function lineStyle(dot1, dot2) {
         var r = mixComponents(dot1.color.r, dot2.color.r, dot1.radius, dot2.radius);
         var g = mixComponents(dot1.color.g, dot2.color.g, dot1.radius, dot2.radius);;
@@ -52,7 +52,7 @@ function dotGenerator(i, linesOrNot) {
 
         return gradient(dot1, dot2, midColor);
     }
-    
+
     var connectArea = {
         x: 50*canvas.width / 100,
         y: 50*canvas.height / 100
@@ -67,16 +67,16 @@ function dotGenerator(i, linesOrNot) {
         connectAreaRadius: 100,
         array: []
     };
-  
+
     function Dot() {
         this.x = Math.random() * canvas.width;
         this.y = Math.random() * canvas.height;
         this.vx = Math.random() - 0.5;
-        this.vy = Math.random() - 0.5;  
+        this.vy = Math.random() - 0.5;
         this.radius = Math.random() * 2;
         this.color = new Color();
     }
-  
+
     Dot.prototype = {
         draw: function() {
             ctx.beginPath();
@@ -85,7 +85,7 @@ function dotGenerator(i, linesOrNot) {
             ctx.fill();
         }
     };
-  
+
     function moveDots() {
         for (var i = 0; i < dots.nb; i++) {
             var dot = dots.array[i];
@@ -99,7 +99,7 @@ function dotGenerator(i, linesOrNot) {
             dot.y += dot.vy;
         }
     }
-    
+
     //If u dont want to connect the lines
     if(linesOrNot){
         function connectDots() {
@@ -115,8 +115,8 @@ function dotGenerator(i, linesOrNot) {
                     var xCoreDiff = dot1.x - connectArea.x;
                     var yCoreDiff = dot1.y - connectArea.y;
 
-                    if ( (xDiff < dots.distMax && xDiff > -dots.distMax) 
-                        && (yDiff < dots.distMax && yDiff > -dots.distMax) 
+                    if ( (xDiff < dots.distMax && xDiff > -dots.distMax)
+                        && (yDiff < dots.distMax && yDiff > -dots.distMax)
                         && (xCoreDiff < dots.connectAreaRadius && xCoreDiff > -dots.connectAreaRadius)
                         && (yCoreDiff < dots.connectAreaRadius && yCoreDiff > -dots.connectAreaRadius) ) {
                         ctx.beginPath();
@@ -134,20 +134,20 @@ function dotGenerator(i, linesOrNot) {
             connectArea.y = e.pageY;
         });
     }
-  
+
     function createDots() {
         for(i = 0; i < dots.nb; i++) {
             dots.array.push(new Dot());
         }
     }
-  
+
     function drawDots() {
         for(i = 0; i < dots.nb; i++) {
             dot = dots.array[i];
             dot.draw();
         }
     }
-  
+
     function animateDots() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         moveDots();
@@ -157,9 +157,6 @@ function dotGenerator(i, linesOrNot) {
         drawDots();
     }
 
-    
-
     createDots();
     setInterval(animateDots, 40);
-  
 }

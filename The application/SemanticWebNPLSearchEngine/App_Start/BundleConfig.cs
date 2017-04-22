@@ -1,5 +1,4 @@
 ﻿using SemanticWebNPLSearchEngine.Constants;
-using System.Web;
 using System.Web.Optimization;
 
 namespace SemanticWebNPLSearchEngine
@@ -17,6 +16,7 @@ namespace SemanticWebNPLSearchEngine
             AddCss(bundles);
             AddJavaScript(bundles);
         }
+
         private static void AddCss(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle(
@@ -29,6 +29,7 @@ namespace SemanticWebNPLSearchEngine
                 ContentDeliveryNetworks.MaxCdn.FontAwesomeUrl)
                 .Include("~/Content/fontawesome/site.css"));
         }
+
         private static void AddJavaScript(BundleCollection bundles)
         {
             // jQuery - The JavaScript helper API (http://jquery.com/).
