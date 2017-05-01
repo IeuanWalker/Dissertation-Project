@@ -26,7 +26,7 @@ namespace SemanticWebNPLSearchEngine.Controllers
         public async Task<ActionResult> Search(string searchQuery)
         {
             //Run the search method if user has search for an item i.e. id isn't null
-            if (!String.IsNullOrEmpty(searchQuery) || !String.IsNullOrEmpty(searchQuery.Trim()))
+            if (String.IsNullOrEmpty(searchQuery) || String.IsNullOrEmpty(searchQuery.Trim()))
             {
                 Response.Redirect("Index");
             }
