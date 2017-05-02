@@ -32,12 +32,12 @@ namespace SemanticWebNPLSearchEngine.Controllers
             }
             else
             {
-               Stopwatch timer = Stopwatch.StartNew();
-               await UserSearch.searchAsync(searchQuery);
-               timer.Stop();
-               Debug.WriteLine(timer.ElapsedMilliseconds);
+                Stopwatch timer = Stopwatch.StartNew();
+                await UserSearch.searchAsync(searchQuery);
+                timer.Stop();
+                Debug.WriteLine(timer.ElapsedMilliseconds);
             }
-             
+
             ViewBag.searchString = searchQuery;
 
             var searchResult = from b in db.movieUserSearchTable select b;
