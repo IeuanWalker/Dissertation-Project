@@ -9,9 +9,13 @@ namespace SemanticWebNPLSearchEngine.Classes
 {
     public class movieSearch
     {
-        private readonly MovieDBContext db = new MovieDBContext();
-        private int minutesOld = -2;
+        readonly MovieDBContext db = new MovieDBContext();
+        int minutesOld = -2;
 
+        /// <summary>
+        /// This method is used to run the search process
+        /// </summary>
+        /// <param name="query">Search string entered by user</param>
         public async Task searchAsync(string query)
         {
             //Check if search exists
@@ -64,6 +68,10 @@ namespace SemanticWebNPLSearchEngine.Classes
             }
         }
 
+        /// <summary>
+        /// Method used to gather new data
+        /// </summary>
+        /// <param name="query">String: users search query</param>
         private async Task gatherNewDataAsync(string query)
         {
             //Luis.ai report
@@ -78,6 +86,11 @@ namespace SemanticWebNPLSearchEngine.Classes
             loopValuesToDatabase(query, resultSetMovieSearch);
         }
 
+        /// <summary>
+        /// Methods used to format data and loop to database
+        /// </summary>
+        /// <param name="searchString">String: Users search string</param>
+        /// <param name="resultSet">SparqlResultSet: Result set from DBpedia</param>
         private void loopValuesToDatabase(string searchString, SparqlResultSet resultSet)
         {
             foreach (SparqlResult result in resultSet)
@@ -104,6 +117,16 @@ namespace SemanticWebNPLSearchEngine.Classes
             }
         }
 
+
+        /// <summary>
+        /// Method to add an item to the database
+        /// </summary>
+        /// <param name="searchString">String: Users search string</param>
+        /// <param name="movieLink">String: movie link</param>
+        /// <param name="tilte">String: movie title</param>
+        /// <param name="genreLink">String: movie genre link</param>
+        /// <param name="genre">String: movie genre</param>
+        /// <param name="releaseDate">String: Movie release date</param>
         private void AddToDatabase(string searchString, string movieLink, string tilte, string genreLink, string genre, string releaseDate)
         {
             //Create movie search object

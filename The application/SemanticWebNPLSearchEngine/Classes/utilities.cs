@@ -11,7 +11,11 @@ namespace SemanticWebNPLSearchEngine.Classes
 {
     public class utilities
     {
-        //Method to query the Luis.ai
+        /// <summary>
+        /// Method to query the Luis.ai
+        /// </summary>
+        /// <param name="Query">String: Users search query</param>
+        /// <returns>LuisJSONModel: Object containing luis.ai data</returns>
         public static async Task<LuisJSONModel> CallLuisAsync(string Query)
         {
             LuisJSONModel Data = new LuisJSONModel();
@@ -37,7 +41,11 @@ namespace SemanticWebNPLSearchEngine.Classes
             return Data;
         }
 
-        //Method to extract data from the Luis.ai JSON file
+        /// <summary>
+        /// Method to extract data from the Luis.ai JSON file
+        /// </summary>
+        /// <param name="luisJson">LuisJSONModel: Method used to extract data from the LuisJSONModel</param>
+        /// <returns>String: Custom SPARQL query</returns>
         public static string ExtractLuisData(LuisJSONModel luisJson)
         {
             int numberOfItems = 0;
@@ -78,7 +86,15 @@ namespace SemanticWebNPLSearchEngine.Classes
             return CreateSparqlQuery(numberOfItems, genre, year, exactDate);
         }
 
-        //Method to create custom SPARQL query
+
+        /// <summary>
+        /// Method to create custom SPARQL query
+        /// </summary>
+        /// <param name="numberOfItems">Int: number of items that will be returned</param>
+        /// <param name="genre">String: Genre of the movie</param>
+        /// <param name="year">Int: Year of the films</param>
+        /// <param name="exactDate">String: The exact date of the films</param>
+        /// <returns>String: Returns a custom SPARQL Query</returns>
         private static string CreateSparqlQuery(int numberOfItems, string genre, int year, string exactDate)
         {
             string limit = numberOfItems > 0 ? String.Format("LIMIT({0})", numberOfItems) : "";
@@ -122,7 +138,12 @@ namespace SemanticWebNPLSearchEngine.Classes
             return String.Format(queryPattern, genreMatch, dateMatch, limit);
         }
 
-        //Method to Query Dbpedia and return a Sparql Result set
+
+        /// <summary>
+        /// Method to Query Dbpedia and return a Sparql Result set
+        /// </summary>
+        /// <param name="query">The SPARQL query</param>
+        /// <returns>SparqlResutSet containing results from DBpedia</returns>
         public static SparqlResultSet QueryDbpedia(string query)
         {
             //Define a remote endpoint
@@ -135,7 +156,12 @@ namespace SemanticWebNPLSearchEngine.Classes
             return results;
         }
 
-        //Method to remove the @en at the end of strings
+
+        /// <summary>
+        /// Method to remove the @en at the end of strings
+        /// </summary>
+        /// <param name="word">String with '@en' at the end</param>
+        /// <returns>The same word without '@en' at the end</returns>
         public static string RemoveLast3Cahracters(string word)
         {
             if (word.Length > 3)
@@ -145,7 +171,11 @@ namespace SemanticWebNPLSearchEngine.Classes
             return word;
         }
 
-        //Method to return just the date
+        /// <summary>
+        /// Method to return just the date
+        /// </summary>
+        /// <param name="word">date string returned from DBpedia</param>
+        /// <returns>The returned data as string</returns>
         public static string DateCreator(string word)
         {
             if (!(word == null || word == ""))
