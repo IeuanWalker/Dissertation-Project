@@ -1,0 +1,46 @@
+﻿{
+  "query": "9 films from 2010",
+  "topScoringIntent": {
+    "intent": "Movie search",
+    "score": 0.999997139
+  },
+  "intents": [
+    {
+      "intent": "Movie search",
+      "score": 0.999997139
+    },
+    {
+      "intent": "None",
+      "score": 0.03972734
+    }
+  ],
+  "entities": [
+    {
+      "entity": "9",
+      "type": "builtin.number",
+      "startIndex": 0,
+      "endIndex": 0,
+      "resolution": {
+        "value": "9"
+      }
+    },
+    {
+      "entity": "2010",
+      "type": "builtin.number",
+      "startIndex": 13,
+      "endIndex": 16,
+      "resolution": {
+        "value": "2010"
+      }
+    },
+    {
+      "entity": "2010",
+      "type": "builtin.datetime.date",
+      "startIndex": 13,
+      "endIndex": 16,
+      "resolution": {
+        "date": "2010"
+      }
+    }
+  ]
+}

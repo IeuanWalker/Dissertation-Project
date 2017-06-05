@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticWebNPLSearchEngine", "SemanticWebNPLSearchEngine\SemanticWebNPLSearchEngine.csproj", "{D71D3826-0B14-46FE-88FA-603ABD346FE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticSearchEngine.Test", "SemanticSearchEngine.Test\SemanticSearchEngine.Test.csproj", "{F7AD87BB-6CEA-43AC-A7D3-9CC4D635D135}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticWebNPLSearchEngine.Tests", "SemanticWebNPLSearchEngine.Tests\SemanticWebNPLSearchEngine.Tests.csproj", "{12F4C800-AD8D-41CF-A266-7B7B08E37844}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{D71D3826-0B14-46FE-88FA-603ABD346FE8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D71D3826-0B14-46FE-88FA-603ABD346FE8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D71D3826-0B14-46FE-88FA-603ABD346FE8}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F7AD87BB-6CEA-43AC-A7D3-9CC4D635D135}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F7AD87BB-6CEA-43AC-A7D3-9CC4D635D135}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F7AD87BB-6CEA-43AC-A7D3-9CC4D635D135}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F7AD87BB-6CEA-43AC-A7D3-9CC4D635D135}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12F4C800-AD8D-41CF-A266-7B7B08E37844}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12F4C800-AD8D-41CF-A266-7B7B08E37844}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12F4C800-AD8D-41CF-A266-7B7B08E37844}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12F4C800-AD8D-41CF-A266-7B7B08E37844}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

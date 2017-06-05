@@ -1,0 +1,63 @@
+﻿{
+  "query": "10 crime films from 2012",
+  "topScoringIntent": {
+    "intent": "Movie search",
+    "score": 1.0
+  },
+  "intents": [
+    {
+      "intent": "Movie search",
+      "score": 1.0
+    },
+    {
+      "intent": "None",
+      "score": 0.0137549834
+    }
+  ],
+  "entities": [
+    {
+      "entity": "10",
+      "type": "builtin.number",
+      "startIndex": 0,
+      "endIndex": 1,
+      "resolution": {
+        "value": "10"
+      }
+    },
+    {
+      "entity": "2012",
+      "type": "builtin.number",
+      "startIndex": 20,
+      "endIndex": 23,
+      "resolution": {
+        "value": "2012"
+      }
+    },
+    {
+      "entity": "crime",
+      "type": "genre",
+      "startIndex": 3,
+      "endIndex": 7,
+      "score": 0.9998125
+    },
+    {
+      "entity": "10",
+      "type": "builtin.datetime.time",
+      "startIndex": 0,
+      "endIndex": 1,
+      "resolution": {
+        "comment": "ampm",
+        "time": "T10"
+      }
+    },
+    {
+      "entity": "2012",
+      "type": "builtin.datetime.date",
+      "startIndex": 20,
+      "endIndex": 23,
+      "resolution": {
+        "date": "2012"
+      }
+    }
+  ]
+}
