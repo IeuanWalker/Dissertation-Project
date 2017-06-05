@@ -94,17 +94,17 @@ namespace SemanticWebNPLSearchEngine.Classes
                 {
                     genre = utilities.RemoveLast3Cahracters(result["genre"].ToString());
                 }
-                DateTime? releaseDate = null;
+                string releaseDate = "";
                 if (!(result["releaseDate"] == null))
                 {
-                    releaseDate = Convert.ToDateTime(utilities.DateCreator(result["releaseDate"].ToString()));
+                    releaseDate = utilities.DateCreator(result["releaseDate"].ToString());
                 }
 
                 AddToDatabase(searchString, movieLink, title, genreLink, genre, releaseDate);
             }
         }
 
-        private void AddToDatabase(string searchString, string movieLink, string tilte, string genreLink, string genre, DateTime? releaseDate)
+        private void AddToDatabase(string searchString, string movieLink, string tilte, string genreLink, string genre, string releaseDate)
         {
             //Create movie search object
             MovieUserSearch movieSearch = new MovieUserSearch
