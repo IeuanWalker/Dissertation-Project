@@ -12,11 +12,15 @@ namespace SemanticWebNPLSearchEngine.Controllers
 {
     public class HomeController : Controller
     {
+        #region Private Variables
+
         //Access to database
         private readonly MovieDBContext db = new MovieDBContext();
 
         //Access to different classes
-        private movieSearch UserSearch = new movieSearch();
+        private readonly movieSearch UserSearch = new movieSearch();
+
+        #endregion Private Variables
 
         public ActionResult Index()
         {

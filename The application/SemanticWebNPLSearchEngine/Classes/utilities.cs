@@ -9,7 +9,8 @@ using VDS.RDF.Query;
 
 namespace SemanticWebNPLSearchEngine.Classes
 {
-    public class utilities
+    public static class utilities
+
     {
         /// <summary>
         /// Method to query the Luis.ai
@@ -26,7 +27,7 @@ namespace SemanticWebNPLSearchEngine.Classes
                 string LUIS_Subscription_Key = WebConfigurationManager.AppSettings["LUIS_Subscription_Key"];
                 string LUIS_Query = Uri.EscapeDataString(Query);
 
-                string RequestUri = String.Format("{0}{1}?subscription-key={2}&verbose=true&q={3}", LUIS_Url, LUIS_Id, LUIS_Subscription_Key, LUIS_Query);
+                string RequestUri = $"{LUIS_Url}{LUIS_Id}?subscription-key={LUIS_Subscription_Key}&verbose=true&q={LUIS_Query}";
                 Console.WriteLine(RequestUri);
 
                 HttpResponseMessage msg = await client.GetAsync(RequestUri);
@@ -48,17 +49,24 @@ namespace SemanticWebNPLSearchEngine.Classes
         /// <returns>String: Custom SPARQL query</returns>
         public static string ExtractLuisData(LuisJSONModel luisJson)
         {
+            #region private variables
+
             int numberOfItems = 0;
-            string genre = "";
+            string genre = String.Empty;
             int year = 0;
-            string exactDate = "";
+            string exactDate = String.Empty;
+            int number;
+            DateTime exactDateTime;
+            int yearDateTime;
+
+            #endregion private variables
 
             foreach (var i in luisJson.entities)
             {
                 switch (i.type)
                 {
                     case "builtin.number":
-                        if (int.TryParse(i.resolution.value, out int number))
+                        if (int.TryParse(i.resolution.value, out number))
                         {
                             if (number < 1000)
                             {
@@ -72,11 +80,11 @@ namespace SemanticWebNPLSearchEngine.Classes
                         break;
 
                     case "builtin.datetime.date":
-                        if (DateTime.TryParse(i.entity, out DateTime exactDateTime))
+                        if (DateTime.TryParse(i.entity, out exactDateTime))
                         {
                             exactDate = exactDateTime.ToString();
                         }
-                        else if (int.TryParse(i.entity, out int yearDateTime) && (i.entity.Length == 4))
+                        else if (int.TryParse(i.entity, out yearDateTime) && (i.entity.Length == 4))
                         {
                             year = yearDateTime;
                         }
@@ -85,7 +93,6 @@ namespace SemanticWebNPLSearchEngine.Classes
             }
             return CreateSparqlQuery(numberOfItems, genre, year, exactDate);
         }
-
 
         /// <summary>
         /// Method to create custom SPARQL query
@@ -97,9 +104,9 @@ namespace SemanticWebNPLSearchEngine.Classes
         /// <returns>String: Returns a custom SPARQL Query</returns>
         private static string CreateSparqlQuery(int numberOfItems, string genre, int year, string exactDate)
         {
-            string limit = numberOfItems > 0 ? String.Format("LIMIT({0})", numberOfItems) : "";
-            string genreMatch = String.IsNullOrEmpty(genre.Trim()) ? "" : String.Format("FILTER ( regex (str(?genre), '{0}', 'i'))", genre);
-            string dateMatch = "";
+            string limit = numberOfItems > 0 ? $"LIMIT({numberOfItems})" : String.Empty;
+            string genreMatch = String.IsNullOrEmpty(genre.Trim()) ? String.Empty : $"FILTER ( regex (str(?genre), '{genre}', 'i'))";
+            string dateMatch = String.Empty;
 
             if (exactDate.Equals(DateTime.Now) && year.Equals(0))
             {
@@ -107,11 +114,11 @@ namespace SemanticWebNPLSearchEngine.Classes
             }
             else if (!String.IsNullOrEmpty(exactDate.Trim()))
             {
-                dateMatch = String.Format("FILTER ( regex (str(?releaseDate), '{0}', 'i'))", exactDate);
+                dateMatch = $"FILTER ( regex (str(?releaseDate), '{exactDate}', 'i'))";
             }
             else if (!year.Equals(0))
             {
-                dateMatch = String.Format("FILTER ((?releaseDate >= '{0}-01-01'^^xsd:date) && (?releaseDate < '{0}-12-31'^^xsd:date))", year);
+                dateMatch = $"FILTER ((?releaseDate >= '{year}-01-01'^^xsd:date) && (?releaseDate < '{year}-12-31'^^xsd:date))";
             }
 
             string queryPattern =
@@ -138,7 +145,6 @@ namespace SemanticWebNPLSearchEngine.Classes
             return String.Format(queryPattern, genreMatch, dateMatch, limit);
         }
 
-
         /// <summary>
         /// Method to Query Dbpedia and return a Sparql Result set
         /// </summary>
@@ -155,7 +161,6 @@ namespace SemanticWebNPLSearchEngine.Classes
 
             return results;
         }
-
 
         /// <summary>
         /// Method to remove the @en at the end of strings
@@ -178,12 +183,11 @@ namespace SemanticWebNPLSearchEngine.Classes
         /// <returns>The returned data as string</returns>
         public static string DateCreator(string word)
         {
-            if (!(word == null || word == ""))
+            if (!(string.IsNullOrEmpty(word)))
             {
                 int index = word.IndexOf("^", StringComparison.Ordinal);
                 word = word.Substring(0, index);
             }
-
             return word;
         }
     }

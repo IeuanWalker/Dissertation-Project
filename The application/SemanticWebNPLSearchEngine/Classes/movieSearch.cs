@@ -9,8 +9,12 @@ namespace SemanticWebNPLSearchEngine.Classes
 {
     public class movieSearch
     {
-        readonly MovieDBContext db = new MovieDBContext();
-        int minutesOld = -2;
+        #region private variables
+
+        private readonly MovieDBContext db = new MovieDBContext();
+        private int minutesOld = -2;
+
+        #endregion private variables
 
         /// <summary>
         /// This method is used to run the search process
@@ -97,17 +101,17 @@ namespace SemanticWebNPLSearchEngine.Classes
             {
                 string movieLink = result["movieLink"].ToString();
                 string title = utilities.RemoveLast3Cahracters(result["title"].ToString());
-                string genreLink = "";
+                string genreLink = String.Empty;
                 if (!(result["genreLink"] == null))
                 {
                     genreLink = result["genreLink"].ToString();
                 }
-                string genre = "";
+                string genre = String.Empty;
                 if (!(result["genre"] == null))
                 {
                     genre = utilities.RemoveLast3Cahracters(result["genre"].ToString());
                 }
-                string releaseDate = "";
+                string releaseDate = String.Empty;
                 if (!(result["releaseDate"] == null))
                 {
                     releaseDate = utilities.DateCreator(result["releaseDate"].ToString());
@@ -116,7 +120,6 @@ namespace SemanticWebNPLSearchEngine.Classes
                 AddToDatabase(searchString, movieLink, title, genreLink, genre, releaseDate);
             }
         }
-
 
         /// <summary>
         /// Method to add an item to the database

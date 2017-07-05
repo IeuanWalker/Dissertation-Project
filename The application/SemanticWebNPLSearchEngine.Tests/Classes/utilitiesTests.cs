@@ -1,8 +1,8 @@
-﻿using System;
-using System.IO;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using SemanticWebNPLSearchEngine.Models;
+using System;
+using System.IO;
 
 namespace SemanticWebNPLSearchEngine.Classes.Tests
 {
@@ -19,6 +19,7 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
 
             Assert.AreEqual(expected, output);
         }
+
         [TestMethod()]
         public void DateCreatorTest()
         {
@@ -33,9 +34,9 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
         [TestMethod()]
         public void ExtractLuisDataTest()
         {
-            string limit = String.Format("LIMIT({0})", 10);
-            string genreMatch = String.Format("FILTER ( regex (str(?genre), '{0}', 'i'))", "crime");
-            string dateMatch = String.Format("FILTER ((?releaseDate >= '{0}-01-01'^^xsd:date) && (?releaseDate < '{0}-12-31'^^xsd:date))", 2012); ;
+            string limit = $"LIMIT({10})";
+            string genreMatch = $"FILTER ( regex (str(?genre), '{"crime"}', 'i'))";
+            string dateMatch = $"FILTER ((?releaseDate >= '{2012}-01-01'^^xsd:date) && (?releaseDate < '{2012}-12-31'^^xsd:date))";
 
             string queryPattern =
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
@@ -60,9 +61,9 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
 
             LuisJSONModel data = new LuisJSONModel();
 
-            var file = Path.Combine(@"C:\Users\ieuan\Desktop\New folder\Dissertation-Project\The application\SemanticWebNPLSearchEngine.Tests\Classes\TestItems\test2LuisData.json");
+            string currDir = Directory.GetCurrentDirectory();
+            var file = Path.Combine(@"C:\Users\n773773\Source\Repos\Dissertation-Project\The application\SemanticWebNPLSearchEngine.Tests\Classes\TestItems");
             data = JsonConvert.DeserializeObject<LuisJSONModel>(File.ReadAllText(file));
-
 
             string output = utilities.ExtractLuisData(data);
 
