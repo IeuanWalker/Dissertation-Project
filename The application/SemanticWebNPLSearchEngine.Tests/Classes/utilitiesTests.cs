@@ -61,7 +61,6 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
 
             LuisJSONModel data = new LuisJSONModel();
 
-            string currDir = Directory.GetCurrentDirectory();
             var file = Path.Combine(@"C:\Users\n773773\Source\Repos\Dissertation-Project\The application\SemanticWebNPLSearchEngine.Tests\Classes\TestItems");
             data = JsonConvert.DeserializeObject<LuisJSONModel>(File.ReadAllText(file));
 
