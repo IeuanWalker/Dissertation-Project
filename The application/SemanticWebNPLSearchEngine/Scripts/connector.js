@@ -46,8 +46,8 @@ function dotGenerator(i, linesOrNot) {
 
     function lineStyle(dot1, dot2) {
         var r = mixComponents(dot1.color.r, dot2.color.r, dot1.radius, dot2.radius);
-        var g = mixComponents(dot1.color.g, dot2.color.g, dot1.radius, dot2.radius);;
-        var b = mixComponents(dot1.color.b, dot2.color.b, dot1.radius, dot2.radius);;
+        var g = mixComponents(dot1.color.g, dot2.color.g, dot1.radius, dot2.radius);
+        var b = mixComponents(dot1.color.b, dot2.color.b, dot1.radius, dot2.radius);
         var midColor = 'rgba(' + Math.floor(r) + ',' + Math.floor(g) + ',' + Math.floor(b) + ', 0.8)';
 
         return gradient(dot1, dot2, midColor);
