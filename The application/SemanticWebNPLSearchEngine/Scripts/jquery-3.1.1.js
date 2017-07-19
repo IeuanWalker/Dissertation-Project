@@ -2333,7 +2333,7 @@
                                 [] :
 
                                 // ...otherwise use results directly
-                                results :
+                        results :
                             matcherIn;
 
                     // Find primary matches
@@ -3532,7 +3532,7 @@
 
                                     // Only normal processors (resolve) catch and reject exceptions
                                     process = special ?
-                                        mightThrow :
+                                    mightThrow :
                                         function () {
                                             try {
                                                 mightThrow();
@@ -3582,7 +3582,7 @@
                                     0,
                                     newDefer,
                                     jQuery.isFunction(onProgress) ?
-                                        onProgress :
+                                onProgress :
                                         Identity,
                                     newDefer.notifyWith
                                 )
@@ -3594,7 +3594,7 @@
                                     0,
                                     newDefer,
                                     jQuery.isFunction(onFulfilled) ?
-                                        onFulfilled :
+                                onFulfilled :
                                         Identity
                                 )
                             );
@@ -3605,7 +3605,7 @@
                                     0,
                                     newDefer,
                                     jQuery.isFunction(onRejected) ?
-                                        onRejected :
+                                onRejected :
                                         Thrower
                                 )
                             );
@@ -3865,7 +3865,7 @@
                 for (; i < len; i++) {
                     fn(
                         elems[i], key, raw ?
-                            value :
+                        value :
                             value.call(elems[i], i, fn(elems[i], key))
                     );
                 }

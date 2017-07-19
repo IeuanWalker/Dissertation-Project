@@ -106,10 +106,10 @@
         for (var i in mediastyles) {
             if (mediastyles.hasOwnProperty(i)) {
                 var thisstyle = mediastyles[i], min = thisstyle.minw, max = thisstyle.maxw, minnull = min === null, maxnull = max === null, em = "em";
-                if (!!min) {
+                if (!min) {
                     min = parseFloat(min) * (min.indexOf(em) > -1 ? eminpx || getEmValue() : 1);
                 }
-                if (!!max) {
+                if (!max) {
                     max = parseFloat(max) * (max.indexOf(em) > -1 ? eminpx || getEmValue() : 1);
                 }
                 if (!thisstyle.hasquery || (!minnull || !maxnull) && (minnull || currWidth >= min) && (maxnull || currWidth <= max)) {

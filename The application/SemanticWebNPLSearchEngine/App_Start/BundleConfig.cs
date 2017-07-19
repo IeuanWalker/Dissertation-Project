@@ -9,8 +9,8 @@ namespace SemanticWebNPLSearchEngine
         public static void RegisterBundles(BundleCollection bundles)
         {
             // Enable CDN usage.
-            // Note: I am using Google's CDN where possible and then Microsoft if not available for better
-            //       performance (Google is more likely to have been cached by the users browser).
+            // Note: I am using Google's CDN where possible and then Microsoft if not available for
+            //       better performance (Google is more likely to have been cached by the users browser).
             bundles.UseCdn = true;
 
             AddCss(bundles);
