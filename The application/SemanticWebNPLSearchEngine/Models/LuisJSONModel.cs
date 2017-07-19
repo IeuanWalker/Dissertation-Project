@@ -4,38 +4,38 @@ namespace SemanticWebNPLSearchEngine.Models
 {
     public class TopScoringIntent
     {
-        public string intent { get; set; }
-        public double score { get; set; }
+        public string Intent { get; set; }
+        public double Score { get; set; }
     }
 
     public class Intent
     {
         public string intent { get; set; }
-        public double score { get; set; }
+        public double Score { get; set; }
     }
 
     public class Resolution
     {
-        public string value { get; set; }
-        public string comment { get; set; }
-        public string time { get; set; }
+        public string Value { get; set; }
+        public string Comment { get; set; }
+        public string Time { get; set; }
     }
 
     public class Entity
     {
         public string entity { get; set; }
-        public string type { get; set; }
-        public int startIndex { get; set; }
-        public int endIndex { get; set; }
-        public Resolution resolution { get; set; }
-        public double? score { get; set; }
+        public string Type { get; set; }
+        public int StartIndex { get; set; }
+        public int EndIndex { get; set; }
+        public Resolution Resolution { get; set; }
+        public double? Score { get; set; }
     }
 
-    public class LuisJSONModel
+    public class LuisJsonModel
     {
-        public string query { get; set; }
-        public TopScoringIntent topScoringIntent { get; set; }
-        public IList<Intent> intents { get; set; }
-        public IList<Entity> entities { get; set; }
+        public string Query { get; set; }
+        public TopScoringIntent TopScoringIntent { get; set; }
+        public IList<Intent> Intents { get; set; }
+        public IList<Entity> Entities { get; set; }
     }
 }

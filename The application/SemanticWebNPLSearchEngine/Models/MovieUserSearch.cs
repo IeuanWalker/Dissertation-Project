@@ -6,7 +6,7 @@ namespace SemanticWebNPLSearchEngine.Models
     public class MovieUserSearch
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string SearchedFor { get; set; }

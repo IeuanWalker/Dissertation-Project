@@ -13,10 +13,10 @@ namespace SemanticWebNPLSearchEngine.Controllers
     public class HomeController : Controller
     {
         //Access to database
-        private readonly MovieDBContext db = new MovieDBContext();
+        private readonly MovieDbContext _db = new MovieDbContext();
 
         //Access to different classes
-        private movieSearch UserSearch = new movieSearch();
+        private MovieSearch _userSearch = new MovieSearch();
 
         public ActionResult Index()
         {
@@ -33,14 +33,14 @@ namespace SemanticWebNPLSearchEngine.Controllers
             else
             {
                 Stopwatch timer = Stopwatch.StartNew();
-                await UserSearch.searchAsync(searchQuery);
+                await _userSearch.SearchAsync(searchQuery);
                 timer.Stop();
                 Debug.WriteLine(timer.ElapsedMilliseconds);
             }
 
             ViewBag.searchString = searchQuery;
 
-            var searchResult = from b in db.movieUserSearchTable select b;
+            var searchResult = from b in _db.MovieUserSearchTable select b;
             searchResult = searchResult.Where(s => s.SearchedFor.Equals(searchQuery));
 
             //Create a list

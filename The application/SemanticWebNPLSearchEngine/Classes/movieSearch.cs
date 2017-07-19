@@ -7,26 +7,26 @@ using VDS.RDF.Query;
 
 namespace SemanticWebNPLSearchEngine.Classes
 {
-    public class movieSearch
+    public class MovieSearch
     {
-        readonly MovieDBContext db = new MovieDBContext();
-        int minutesOld = -2;
+        private readonly MovieDbContext _db = new MovieDbContext();
+        private const int MinutesOld = -2;
 
         /// <summary>
         /// This method is used to run the search process
         /// </summary>
         /// <param name="query">Search string entered by user</param>
-        public async Task searchAsync(string query)
+        public async Task SearchAsync(string query)
         {
             //Check if search exists
-            if (db.movieUserSearchTable.Any(o => o.SearchedFor.Equals(query)))
+            if (_db.MovieUserSearchTable.Any(o => o.SearchedFor.Equals(query)))
             {
-                var queryDate = from s in db.movieUserSearchTable
+                var queryDate = from s in _db.MovieUserSearchTable
                                 where s.SearchedFor == query
                                 select s;
 
                 var dateTimeNow = DateTime.Now;
-                var dateTimeOldest = dateTimeNow.AddMinutes(minutesOld);
+                var dateTimeOldest = dateTimeNow.AddMinutes(MinutesOld);
                 var lastUpdated = queryDate.FirstOrDefault().LastUpdated;
 
                 //check date
@@ -38,15 +38,15 @@ namespace SemanticWebNPLSearchEngine.Classes
                 {
                     //Information in database is too old, need newer information
                     //Delete current information
-                    var moviesSearch = from s in db.movieUserSearchTable select s;
+                    var moviesSearch = from s in _db.MovieUserSearchTable select s;
                     moviesSearch = moviesSearch.Where(s => s.SearchedFor.Equals(query));
                     foreach (MovieUserSearch i in moviesSearch)
                     {
-                        db.movieUserSearchTable.Remove(db.movieUserSearchTable.Find(i.ID));
+                        _db.MovieUserSearchTable.Remove(_db.MovieUserSearchTable.Find(i.Id));
                     }
                     try
                     {
-                        db.SaveChanges();
+                        _db.SaveChanges();
                     }
                     catch (Exception e)
                     {
@@ -54,7 +54,7 @@ namespace SemanticWebNPLSearchEngine.Classes
                         Debug.WriteLine(e);
                     }
                     //Request new information
-                    await gatherNewDataAsync(query);
+                    await GatherNewDataAsync(query).ConfigureAwait(false);
                 }
                 else if (lastUpdated > dateTimeNow)
                 {
@@ -64,7 +64,7 @@ namespace SemanticWebNPLSearchEngine.Classes
             else
             {
                 //Request new information
-                await gatherNewDataAsync(query);
+                await GatherNewDataAsync(query);
             }
         }
 
@@ -72,18 +72,18 @@ namespace SemanticWebNPLSearchEngine.Classes
         /// Method used to gather new data
         /// </summary>
         /// <param name="query">String: users search query</param>
-        private async Task gatherNewDataAsync(string query)
+        private async Task GatherNewDataAsync(string query)
         {
             //Luis.ai report
-            LuisJSONModel LuisJSON = await utilities.CallLuisAsync(query);
+            LuisJsonModel luisJson = await Utilities.CallLuisAsync(query);
             //Create Sparql query from luis report
-            string sparqlQuery = utilities.ExtractLuisData(LuisJSON);
+            string sparqlQuery = Utilities.ExtractLuisData(luisJson);
 
             //Dbpedia data
-            SparqlResultSet resultSetMovieSearch = utilities.QueryDbpedia(sparqlQuery);
+            SparqlResultSet resultSetMovieSearch = Utilities.QueryDbpedia(sparqlQuery);
 
             //Add to database
-            loopValuesToDatabase(query, resultSetMovieSearch);
+            LoopValuesToDatabase(query, resultSetMovieSearch);
         }
 
         /// <summary>
@@ -91,26 +91,26 @@ namespace SemanticWebNPLSearchEngine.Classes
         /// </summary>
         /// <param name="searchString">String: Users search string</param>
         /// <param name="resultSet">SparqlResultSet: Result set from DBpedia</param>
-        private void loopValuesToDatabase(string searchString, SparqlResultSet resultSet)
+        private void LoopValuesToDatabase(string searchString, SparqlResultSet resultSet)
         {
             foreach (SparqlResult result in resultSet)
             {
                 string movieLink = result["movieLink"].ToString();
-                string title = utilities.RemoveLast3Cahracters(result["title"].ToString());
-                string genreLink = "";
-                if (!(result["genreLink"] == null))
+                string title = Utilities.RemoveLast3Cahracters(result["title"].ToString());
+                string genreLink = String.Empty;
+                if (result["genreLink"] != null)
                 {
                     genreLink = result["genreLink"].ToString();
                 }
                 string genre = "";
-                if (!(result["genre"] == null))
+                if (result["genre"] != null)
                 {
-                    genre = utilities.RemoveLast3Cahracters(result["genre"].ToString());
+                    genre = Utilities.RemoveLast3Cahracters(result["genre"].ToString());
                 }
                 string releaseDate = "";
-                if (!(result["releaseDate"] == null))
+                if (result["releaseDate"] != null)
                 {
-                    releaseDate = utilities.DateCreator(result["releaseDate"].ToString());
+                    releaseDate = Utilities.DateCreator(result["releaseDate"].ToString());
                 }
 
                 AddToDatabase(searchString, movieLink, title, genreLink, genre, releaseDate);
@@ -141,12 +141,12 @@ namespace SemanticWebNPLSearchEngine.Classes
             };
 
             //Add the new object to the table
-            db.movieUserSearchTable.Add(movieSearch);
+            _db.MovieUserSearchTable.Add(movieSearch);
 
             //Submit change to database
             try
             {
-                db.SaveChanges();
+                _db.SaveChanges();
             }
             catch (Exception e)
             {

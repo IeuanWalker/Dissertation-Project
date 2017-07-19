@@ -7,7 +7,7 @@ using SemanticWebNPLSearchEngine.Models;
 namespace SemanticWebNPLSearchEngine.Classes.Tests
 {
     [TestClass()]
-    public class utilitiesTests
+    public class UtilitiesTests
     {
         [TestMethod()]
         public void RemoveLast3Cahracters()
@@ -15,7 +15,7 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
             string test = "Hello World@en";
             string expected = "Hello World";
 
-            string output = utilities.RemoveLast3Cahracters(test);
+            string output = Utilities.RemoveLast3Cahracters(test);
 
             Assert.AreEqual(expected, output);
         }
@@ -25,7 +25,7 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
             string test = "08/06/1996^^Date";
             string expected = "08/06/1996";
 
-            string output = utilities.DateCreator(test);
+            string output = Utilities.DateCreator(test);
 
             Assert.AreEqual(expected, output);
         }
@@ -58,13 +58,13 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
                 "{2}";
             string expected = String.Format(queryPattern, genreMatch, dateMatch, limit);
 
-            LuisJSONModel data = new LuisJSONModel();
+            LuisJsonModel data = new LuisJsonModel();
 
             var file = Path.Combine(@"C:\Users\ieuan\Desktop\New folder\Dissertation-Project\The application\SemanticWebNPLSearchEngine.Tests\Classes\TestItems\test2LuisData.json");
-            data = JsonConvert.DeserializeObject<LuisJSONModel>(File.ReadAllText(file));
+            data = JsonConvert.DeserializeObject<LuisJsonModel>(File.ReadAllText(file));
 
 
-            string output = utilities.ExtractLuisData(data);
+            string output = Utilities.ExtractLuisData(data);
 
             Assert.AreEqual(expected, output);
         }

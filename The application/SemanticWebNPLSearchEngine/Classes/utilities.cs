@@ -2,6 +2,7 @@
 using SemanticWebNPLSearchEngine.Models;
 using System;
 using System.Diagnostics;
+using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Configuration;
@@ -9,36 +10,36 @@ using VDS.RDF.Query;
 
 namespace SemanticWebNPLSearchEngine.Classes
 {
-    public class utilities
+    public class Utilities
     {
         /// <summary>
         /// Method to query the Luis.ai
         /// </summary>
-        /// <param name="Query">String: Users search query</param>
+        /// <param name="query">String: Users search query</param>
         /// <returns>LuisJSONModel: Object containing luis.ai data</returns>
-        public static async Task<LuisJSONModel> CallLuisAsync(string Query)
+        public static async Task<LuisJsonModel> CallLuisAsync(string query)
         {
-            LuisJSONModel Data = new LuisJSONModel();
+            LuisJsonModel data = new LuisJsonModel();
             using (HttpClient client = new HttpClient())
             {
-                string LUIS_Url = WebConfigurationManager.AppSettings["LUIS_Url"];
-                string LUIS_Id = WebConfigurationManager.AppSettings["LUIS_Id"];
-                string LUIS_Subscription_Key = WebConfigurationManager.AppSettings["LUIS_Subscription_Key"];
-                string LUIS_Query = Uri.EscapeDataString(Query);
+                string luisUrl = WebConfigurationManager.AppSettings["LUIS_Url"];
+                string luisId = WebConfigurationManager.AppSettings["LUIS_Id"];
+                string luisSubscriptionKey = WebConfigurationManager.AppSettings["LUIS_Subscription_Key"];
+                string luisQuery = Uri.EscapeDataString(query);
 
-                string RequestUri = String.Format("{0}{1}?subscription-key={2}&verbose=true&q={3}", LUIS_Url, LUIS_Id, LUIS_Subscription_Key, LUIS_Query);
-                Console.WriteLine(RequestUri);
+                string requestUri = String.Format("{0}{1}?subscription-key={2}&verbose=true&q={3}", luisUrl, luisId, luisSubscriptionKey, luisQuery);
+                Console.WriteLine(requestUri);
 
-                HttpResponseMessage msg = await client.GetAsync(RequestUri);
+                HttpResponseMessage msg = await client.GetAsync(requestUri);
 
                 if (msg.IsSuccessStatusCode)
                 {
-                    var JsonDataResponse = await msg.Content.ReadAsStringAsync();
-                    Debug.WriteLine(JsonDataResponse);
-                    Data = JsonConvert.DeserializeObject<LuisJSONModel>(JsonDataResponse);
+                    var jsonDataResponse = await msg.Content.ReadAsStringAsync();
+                    Debug.WriteLine(jsonDataResponse);
+                    data = JsonConvert.DeserializeObject<LuisJsonModel>(jsonDataResponse);
                 }
             }
-            return Data;
+            return data;
         }
 
         /// <summary>
@@ -46,19 +47,19 @@ namespace SemanticWebNPLSearchEngine.Classes
         /// </summary>
         /// <param name="luisJson">LuisJSONModel: Method used to extract data from the LuisJSONModel</param>
         /// <returns>String: Custom SPARQL query</returns>
-        public static string ExtractLuisData(LuisJSONModel luisJson)
+        public static string ExtractLuisData(LuisJsonModel luisJson)
         {
             int numberOfItems = 0;
             string genre = "";
             int year = 0;
             string exactDate = "";
 
-            foreach (var i in luisJson.entities)
+            foreach (var i in luisJson.Entities)
             {
-                switch (i.type)
+                switch (i.Type)
                 {
                     case "builtin.number":
-                        if (int.TryParse(i.resolution.value, out int number))
+                        if (int.TryParse(i.Resolution.Value, out int number))
                         {
                             if (number < 1000)
                             {
@@ -164,11 +165,12 @@ namespace SemanticWebNPLSearchEngine.Classes
         /// <returns>The same word without '@en' at the end</returns>
         public static string RemoveLast3Cahracters(string word)
         {
+            string result = String.Empty;
             if (word.Length > 3)
             {
-                word = word.Substring(0, word.Length - 3);
+                result = word.Substring(0, word.Length - 3);
             }
-            return word;
+            return result;
         }
 
         /// <summary>
@@ -178,13 +180,14 @@ namespace SemanticWebNPLSearchEngine.Classes
         /// <returns>The returned data as string</returns>
         public static string DateCreator(string word)
         {
-            if (!(word == null || word == ""))
+            string date = String.Empty;
+            if (!string.IsNullOrEmpty(word))
             {
                 int index = word.IndexOf("^", StringComparison.Ordinal);
-                word = word.Substring(0, index);
+                date = word.Substring(0, index);
             }
 
-            return word;
+            return date;
         }
     }
 }

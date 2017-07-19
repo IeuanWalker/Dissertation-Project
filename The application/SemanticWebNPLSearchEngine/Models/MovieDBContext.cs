@@ -2,8 +2,8 @@
 
 namespace SemanticWebNPLSearchEngine.Models
 {
-    public class MovieDBContext : DbContext
+    public class MovieDbContext : DbContext
     {
-        public DbSet<MovieUserSearch> movieUserSearchTable { get; set; }
+        public DbSet<MovieUserSearch> MovieUserSearchTable { get; set; }
     }
 }
