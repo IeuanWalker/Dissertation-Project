@@ -16,7 +16,7 @@ namespace SemanticWebNPLSearchEngine.Controllers
         private readonly MovieDbContext _db = new MovieDbContext();
 
         //Access to different classes
-        private MovieSearch _userSearch = new MovieSearch();
+        private readonly MovieSearch _userSearch = new MovieSearch();
 
         public ActionResult Index()
         {

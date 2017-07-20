@@ -10,7 +10,7 @@ using VDS.RDF.Query;
 
 namespace SemanticWebNPLSearchEngine.Classes
 {
-    public class Utilities
+    public static class Utilities
     {
         /// <summary>
         /// Method to query the Luis.ai
