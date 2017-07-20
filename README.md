@@ -1,5 +1,6 @@
 # Dissertation-Project
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/c43c119be3ac4fa5a048a333eaea975d)](https://www.codacy.com/app/ieuan.walker007/Dissertation-Project?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=IeuanWalker/Dissertation-Project&amp;utm_campaign=Badge_Grade)
+
 This is the web application that i have created for my dissertation.
 For deeper understanding about the project or to understand how it was created please read the PDF (Dissertation.pdf).
 
