@@ -1,8 +1,8 @@
-﻿using SemanticWebNPLSearchEngine.Models;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
+using SemanticWebNPLSearchEngine.Models;
 using VDS.RDF.Query;
 
 namespace SemanticWebNPLSearchEngine.Classes
@@ -116,7 +116,6 @@ namespace SemanticWebNPLSearchEngine.Classes
                 AddToDatabase(searchString, movieLink, title, genreLink, genre, releaseDate);
             }
         }
-
 
         /// <summary>
         /// Method to add an item to the database

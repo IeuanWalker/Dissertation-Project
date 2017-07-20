@@ -1,12 +1,12 @@
-﻿using SemanticWebNPLSearchEngine.Classes;
-using SemanticWebNPLSearchEngine.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using SemanticWebNPLSearchEngine.Classes;
+using SemanticWebNPLSearchEngine.Models;
 
 namespace SemanticWebNPLSearchEngine.Controllers
 {

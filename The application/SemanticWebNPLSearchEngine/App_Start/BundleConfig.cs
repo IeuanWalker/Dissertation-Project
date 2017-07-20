@@ -1,5 +1,5 @@
-﻿using SemanticWebNPLSearchEngine.Constants;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
+using SemanticWebNPLSearchEngine.Constants;
 
 namespace SemanticWebNPLSearchEngine
 {

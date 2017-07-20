@@ -1,11 +1,10 @@
-﻿using Newtonsoft.Json;
-using SemanticWebNPLSearchEngine.Models;
-using System;
+﻿using System;
 using System.Diagnostics;
-using System.Globalization;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Configuration;
+using Newtonsoft.Json;
+using SemanticWebNPLSearchEngine.Models;
 using VDS.RDF.Query;
 
 namespace SemanticWebNPLSearchEngine.Classes
@@ -87,7 +86,6 @@ namespace SemanticWebNPLSearchEngine.Classes
             return CreateSparqlQuery(numberOfItems, genre, year, exactDate);
         }
 
-
         /// <summary>
         /// Method to create custom SPARQL query
         /// </summary>
@@ -139,7 +137,6 @@ namespace SemanticWebNPLSearchEngine.Classes
             return String.Format(queryPattern, genreMatch, dateMatch, limit);
         }
 
-
         /// <summary>
         /// Method to Query Dbpedia and return a Sparql Result set
         /// </summary>
@@ -156,7 +153,6 @@ namespace SemanticWebNPLSearchEngine.Classes
 
             return results;
         }
-
 
         /// <summary>
         /// Method to remove the @en at the end of strings

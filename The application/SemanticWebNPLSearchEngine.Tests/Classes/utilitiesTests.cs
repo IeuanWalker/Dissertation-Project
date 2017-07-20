@@ -19,6 +19,7 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
 
             Assert.AreEqual(expected, output);
         }
+
         [TestMethod()]
         public void DateCreatorTest()
         {
@@ -35,7 +36,8 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
         {
             string limit = String.Format("LIMIT({0})", 10);
             string genreMatch = String.Format("FILTER ( regex (str(?genre), '{0}', 'i'))", "crime");
-            string dateMatch = String.Format("FILTER ((?releaseDate >= '{0}-01-01'^^xsd:date) && (?releaseDate < '{0}-12-31'^^xsd:date))", 2012); ;
+            string dateMatch = String.Format("FILTER ((?releaseDate >= '{0}-01-01'^^xsd:date) && (?releaseDate < '{0}-12-31'^^xsd:date))", 2012);
+            ;
 
             string queryPattern =
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
@@ -62,7 +64,6 @@ namespace SemanticWebNPLSearchEngine.Classes.Tests
 
             var file = Path.Combine(@"C:\Users\ieuan\Desktop\New folder\Dissertation-Project\The application\SemanticWebNPLSearchEngine.Tests\Classes\TestItems\test2LuisData.json");
             data = JsonConvert.DeserializeObject<LuisJsonModel>(File.ReadAllText(file));
-
 
             string output = Utilities.ExtractLuisData(data);
 
