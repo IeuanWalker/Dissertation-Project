@@ -8,7 +8,7 @@ namespace DissertationOriginal.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "SemanticWebNPLSearchEngine.Models.MovieDBContext";
+            ContextKey = "DissertationOriginal.Models.MovieDBContext";
         }
 
         protected override void Seed(MovieDbContext context)
