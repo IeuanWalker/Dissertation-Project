@@ -13,8 +13,8 @@ namespace DissertationOriginal.Tests.Classes
         [TestMethod()]
         public void RemoveLast3Cahracters()
         {
-            string test = "Hello World@en";
-            string expected = "Hello World";
+            const string test = "Hello World@en";
+            const string expected = "Hello World";
 
             string output = Utilities.RemoveLast3Cahracters(test);
 
@@ -24,8 +24,8 @@ namespace DissertationOriginal.Tests.Classes
         [TestMethod()]
         public void DateCreatorTest()
         {
-            string test = "08/06/1996^^Date";
-            string expected = "08/06/1996";
+            const string test = "08/06/1996^^Date";
+            const string expected = "08/06/1996";
 
             string output = Utilities.DateCreator(test);
 
@@ -35,8 +35,8 @@ namespace DissertationOriginal.Tests.Classes
         [TestMethod()]
         public void ExtractLuisDataTest()
         {
-            string limit = String.Format("LIMIT({0})", 10);
-            string genreMatch = String.Format("FILTER ( regex (str(?genre), '{0}', 'i'))", "crime");
+            string limit = $"LIMIT({10})";
+            string genreMatch = $"FILTER ( regex (str(?genre), '{"crime"}', 'i'))";
             string dateMatch = String.Format("FILTER ((?releaseDate >= '{0}-01-01'^^xsd:date) && (?releaseDate < '{0}-12-31'^^xsd:date))", 2012);
 
             string queryPattern =
