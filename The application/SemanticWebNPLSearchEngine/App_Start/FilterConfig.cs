@@ -1,6 +1,6 @@
 ﻿using System.Web.Mvc;
 
-namespace SemanticWebNPLSearchEngine
+namespace DissertationOriginal
 {
     public class FilterConfig
     {

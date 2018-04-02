@@ -3,11 +3,11 @@ using System.Diagnostics;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Configuration;
+using DissertationOriginal.Models;
 using Newtonsoft.Json;
-using SemanticWebNPLSearchEngine.Models;
 using VDS.RDF.Query;
 
-namespace SemanticWebNPLSearchEngine.Classes
+namespace DissertationOriginal.Classes
 {
     public static class Utilities
     {

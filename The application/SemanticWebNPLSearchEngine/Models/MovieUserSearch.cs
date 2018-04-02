@@ -1,7 +1,7 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SemanticWebNPLSearchEngine.Models
+namespace DissertationOriginal.Models
 {
     public class MovieUserSearch
     {

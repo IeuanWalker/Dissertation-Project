@@ -1,7 +1,7 @@
 ﻿using System.Web.Optimization;
-using SemanticWebNPLSearchEngine.Constants;
+using DissertationOriginal.Constants;
 
-namespace SemanticWebNPLSearchEngine
+namespace DissertationOriginal
 {
     public class BundleConfig
     {

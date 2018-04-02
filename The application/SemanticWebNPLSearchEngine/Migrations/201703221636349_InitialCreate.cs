@@ -1,7 +1,7 @@
-namespace SemanticWebNPLSearchEngine.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
 
+namespace DissertationOriginal.Migrations
+{
     public partial class InitialCreate : DbMigration
     {
         public override void Up()

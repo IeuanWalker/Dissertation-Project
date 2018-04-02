@@ -5,10 +5,10 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
-using SemanticWebNPLSearchEngine.Classes;
-using SemanticWebNPLSearchEngine.Models;
+using DissertationOriginal.Classes;
+using DissertationOriginal.Models;
 
-namespace SemanticWebNPLSearchEngine.Controllers
+namespace DissertationOriginal.Controllers
 {
     public class HomeController : Controller
     {

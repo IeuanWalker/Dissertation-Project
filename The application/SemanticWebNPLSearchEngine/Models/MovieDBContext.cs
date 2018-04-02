@@ -1,6 +1,6 @@
 ﻿using System.Data.Entity;
 
-namespace SemanticWebNPLSearchEngine.Models
+namespace DissertationOriginal.Models
 {
     public class MovieDbContext : DbContext
     {

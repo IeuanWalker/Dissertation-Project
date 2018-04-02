@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.12
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticWebNPLSearchEngine", "SemanticWebNPLSearchEngine\SemanticWebNPLSearchEngine.csproj", "{D71D3826-0B14-46FE-88FA-603ABD346FE8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DissertationOriginal", "SemanticWebNPLSearchEngine\DissertationOriginal.csproj", "{D71D3826-0B14-46FE-88FA-603ABD346FE8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SemanticWebNPLSearchEngine.Tests", "SemanticWebNPLSearchEngine.Tests\SemanticWebNPLSearchEngine.Tests.csproj", "{12F4C800-AD8D-41CF-A266-7B7B08E37844}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DissertationOriginal.Tests", "SemanticWebNPLSearchEngine.Tests\DissertationOriginal.Tests.csproj", "{12F4C800-AD8D-41CF-A266-7B7B08E37844}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{22B61D9E-D167-4F09-A33B-71449997FD71}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -24,5 +26,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{12F4C800-AD8D-41CF-A266-7B7B08E37844} = {22B61D9E-D167-4F09-A33B-71449997FD71}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F31848FF-4D42-4DB3-BA9A-568682F7E49E}
 	EndGlobalSection
 EndGlobal

@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace SemanticWebNPLSearchEngine.Models
+namespace DissertationOriginal.Models
 {
     public class TopScoringIntent
     {

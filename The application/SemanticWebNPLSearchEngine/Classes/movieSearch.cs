@@ -2,10 +2,10 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using SemanticWebNPLSearchEngine.Models;
+using DissertationOriginal.Models;
 using VDS.RDF.Query;
 
-namespace SemanticWebNPLSearchEngine.Classes
+namespace DissertationOriginal.Classes
 {
     public class MovieSearch
     {

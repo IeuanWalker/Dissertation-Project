@@ -1,4 +1,4 @@
-﻿namespace SemanticWebNPLSearchEngine.Constants
+﻿namespace DissertationOriginal.Constants
 {
     public class ContentDeliveryNetworks
     {

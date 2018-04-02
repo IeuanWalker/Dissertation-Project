@@ -1,8 +1,9 @@
-namespace SemanticWebNPLSearchEngine.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
+using DissertationOriginal.Models;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<SemanticWebNPLSearchEngine.Models.MovieDbContext>
+namespace DissertationOriginal.Migrations
+{
+    internal sealed class Configuration : DbMigrationsConfiguration<MovieDbContext>
     {
         public Configuration()
         {
@@ -10,7 +11,7 @@ namespace SemanticWebNPLSearchEngine.Migrations
             ContextKey = "SemanticWebNPLSearchEngine.Models.MovieDBContext";
         }
 
-        protected override void Seed(SemanticWebNPLSearchEngine.Models.MovieDbContext context)
+        protected override void Seed(MovieDbContext context)
         {
             // This method will be called after migrating to the latest version.
 

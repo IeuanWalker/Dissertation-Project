@@ -7,8 +7,8 @@
     <ProjectGuid>{12F4C800-AD8D-41CF-A266-7B7B08E37844}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SemanticWebNPLSearchEngine.Tests</RootNamespace>
-    <AssemblyName>SemanticWebNPLSearchEngine.Tests</AssemblyName>
+    <RootNamespace>DissertationOriginal.Tests</RootNamespace>
+    <AssemblyName>DissertationOriginal.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -72,9 +72,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SemanticWebNPLSearchEngine\SemanticWebNPLSearchEngine.csproj">
+    <ProjectReference Include="..\SemanticWebNPLSearchEngine\DissertationOriginal.csproj">
       <Project>{D71D3826-0B14-46FE-88FA-603ABD346FE8}</Project>
-      <Name>SemanticWebNPLSearchEngine</Name>
+      <Name>DissertationOriginal</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

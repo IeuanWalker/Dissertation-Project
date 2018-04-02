@@ -1,7 +1,7 @@
-namespace SemanticWebNPLSearchEngine.Migrations
-{
-    using System.Data.Entity.Migrations;
+using System.Data.Entity.Migrations;
 
+namespace DissertationOriginal.Migrations
+{
     public partial class Changedatetostring : DbMigration
     {
         public override void Up()

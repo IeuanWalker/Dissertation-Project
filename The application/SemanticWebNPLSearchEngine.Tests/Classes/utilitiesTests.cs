@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
+using DissertationOriginal.Classes;
+using DissertationOriginal.Models;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using SemanticWebNPLSearchEngine.Models;
 
-namespace SemanticWebNPLSearchEngine.Classes.Tests
+namespace DissertationOriginal.Tests.Classes
 {
     [TestClass()]
     public class UtilitiesTests
