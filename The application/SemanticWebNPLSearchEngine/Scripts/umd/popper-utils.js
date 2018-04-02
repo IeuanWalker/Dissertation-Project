@@ -1140,6 +1140,5 @@ exports.setupEventListeners = setupEventListeners;
 exports['default'] = index;
 
 Object.defineProperty(exports, '__esModule', { value: true });
-
 })));
 //# sourceMappingURL=popper-utils.js.map

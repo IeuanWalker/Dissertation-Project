@@ -1,35 +1,38 @@
 .logo {
-	a{
-		text-align: center;
-		text-decoration: none;
-		display: list-item;
-		list-style: none;
-		h1 {
-			font-family: Walkon;
-			font-size: 70px;
-			letter-spacing: 20px;
-			text-transform: uppercase;
-			color: #fff;
-		}
-		span {
-			font-family: 'Exo 2', sans-serif;
-			font-size: 15px;
-			text-align: center;
-			letter-spacing: 20px;
-			text-transform: uppercase;
-			color: #fff;
-		}
-	}
-	&:hover, &:focus{
-		a{
-			h1, span {
-				-webkit-transition: all 0.5s ease-in-out;
-				transition: all 0.5s ease-in-out;
-				text-decoration: none;
-				color: #fff;
-				outline: 0 none;
-				text-shadow: -1px 1px 8px #ffc, 1px -1px 8px #fff;
-			}
-		}
-	}
+    a {
+        text-align: center;
+        text-decoration: none;
+        display: list-item;
+        list-style: none;
+
+        h1 {
+            font-family: Walkon;
+            font-size: 70px;
+            letter-spacing: 20px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+
+        span {
+            font-family: 'Exo 2', sans-serif;
+            font-size: 15px;
+            text-align: center;
+            letter-spacing: 20px;
+            text-transform: uppercase;
+            color: #fff;
+        }
+    }
+
+    &:hover, &:focus {
+        a {
+            h1, span {
+                -webkit-transition: all 0.5s ease-in-out;
+                transition: all 0.5s ease-in-out;
+                text-decoration: none;
+                color: #fff;
+                outline: 0 none;
+                text-shadow: -1px 1px 8px #ffc, 1px -1px 8px #fff;
+            }
+        }
+    }
 }

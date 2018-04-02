@@ -8,44 +8,44 @@
 <div class="container">
     @if (Model == null || Model.Count() <= 0)
     {
-        <p>Sorry couldn't find results for <strong>@ViewBag.searchString</strong></p>
+    <p>Sorry couldn't find results for <strong>@ViewBag.searchString</strong></p>
     }
     else
     {
-        <P>We found <strong>@Model.Count()</strong> for <strong>@ViewBag.searchString</strong></P>
-        <p>Last updated: @Model.ElementAt(0).LastUpdated</p>
-        <table class="table">
-            <tr>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Release Date</th>
-            </tr>
-            @foreach (var item in Model)
+    <P>We found <strong>@Model.Count()</strong> for <strong>@ViewBag.searchString</strong></P>
+    <p>Last updated: @Model.ElementAt(0).LastUpdated</p>
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Genre</th>
+            <th>Release Date</th>
+        </tr>
+        @foreach (var item in Model)
             {
-                <tr>
-                    <td><a href="@item.MovieLink" target="_blank">@item.Title</a></td>
-                    <td>
-                        @if (@item.Genre == "")
+        <tr>
+            <td><a href="@item.MovieLink" target="_blank">@item.Title</a></td>
+            <td>
+                @if (@item.Genre == "")
                         {
-                            <div>n/a</div>
+                <div>n/a</div>
                         }
                         else
                         {
-                            <a href="@item.GenreLink" target="_blank">@item.Genre</a>
+                <a href="@item.GenreLink" target="_blank">@item.Genre</a>
                         }
-                    </td>
-                    <td>
-                        @if (@item.ReleaseDate == "")
+            </td>
+            <td>
+                @if (@item.ReleaseDate == "")
                         {
-                            <div>n/a</div>
+                <div>n/a</div>
                         }
                         else
                         {
-                            @item.ReleaseDate
+                @item.ReleaseDate
                         }
-                    </td>
-                </tr>
+            </td>
+        </tr>
             }
-        </table>
+    </table>
     }
 </div>
