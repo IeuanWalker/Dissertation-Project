@@ -67,8 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Classes\TestItems\test2LuisData.json" />
-    <None Include="Classes\TestItems\testLuisData.json" />
+    <None Include="Classes\TestItems\test2LuisData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Classes\TestItems\testLuisData.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

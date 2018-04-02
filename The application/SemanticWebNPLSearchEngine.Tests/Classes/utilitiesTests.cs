@@ -60,12 +60,10 @@ namespace DissertationOriginal.Tests.Classes
                 "{2}";
             string expected = String.Format(queryPattern, genreMatch, dateMatch, limit);
 
-            LuisJsonModel data = new LuisJsonModel();
+            var directory = Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().Location);
+            var file = $"{directory}\\Classes\\TestItems\\test2LuisData.json";
 
-
-
-            var file = Path.Combine(@"C:\Users\ieuan\Desktop\New folder\Dissertation-Project\The application\SemanticWebNPLSearchEngine.Tests\Classes\TestItems\test2LuisData.json");
-            data = JsonConvert.DeserializeObject<LuisJsonModel>(File.ReadAllText(file));
+            LuisJsonModel data = JsonConvert.DeserializeObject<LuisJsonModel>(File.ReadAllText(file));
 
             string output = Utilities.ExtractLuisData(data);
 
