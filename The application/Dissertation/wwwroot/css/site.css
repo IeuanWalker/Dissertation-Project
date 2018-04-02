@@ -1,7 +1,50 @@
-﻿body {
-    background: url('http://placehold.it/1920x1080') no-repeat center center fixed;
+﻿html,
+body {
+    height: 100%;
+}
+
+body {
+    background: url(/images/bg.jpg) no-repeat center center fixed;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+.navbar-brand > .logo a h1{
+    font-size: 20px;
+    margin: 0;
+}
+
+.logo a {
+    text-align: center;
+    text-decoration: none;
+    display: list-item;
+    list-style: none;
+}
+
+.logo a h1 {
+    font-family: Walkon;
+    font-size: 70px;
+    letter-spacing: 20px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.logo a span {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 15px;
+    text-align: center;
+    letter-spacing: 20px;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.logo:hover a h1, .logo:hover a span, .logo:focus a h1, .logo:focus a span {
+    -webkit-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    text-decoration: none;
+    color: #fff;
+    outline: 0 none;
+    text-shadow: -1px 1px 8px #ffc, 1px -1px 8px #fff;
 }

@@ -1,6 +1,13 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-
-<h1 class="mt-5">The Big Picture</h1>
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deserunt voluptates rerum eveniet sapiente repellat esse, doloremque quod recusandae deleniti nostrum assumenda vel beatae sed aut modi nesciunt porro quisquam voluptatem.</p>
+<div class="h-100 row align-items-center">
+    <div class="col">
+        @await Html.PartialAsync("_Logo")
+        <br/>
+        <form asp-controller="Home" asp-action="Index" class="input-group mb-3">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name="searchText">
+        </form>
+        <p class="text-center" style="color: #fff">Created by <a href="https://www.linkedin.com/in/ieuanwalker/" target="_blank" style="color: #fff"><strong>Ieuan Walker</strong></a> as part of my dissertation at <a href="#" target="_blank" style="color: #fff"><strong>Cardiff Metropolitan University</strong></a></p>
+    </div>
+</div>
