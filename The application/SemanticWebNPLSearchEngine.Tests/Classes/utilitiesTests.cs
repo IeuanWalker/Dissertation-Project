@@ -38,7 +38,6 @@ namespace DissertationOriginal.Tests.Classes
             string limit = String.Format("LIMIT({0})", 10);
             string genreMatch = String.Format("FILTER ( regex (str(?genre), '{0}', 'i'))", "crime");
             string dateMatch = String.Format("FILTER ((?releaseDate >= '{0}-01-01'^^xsd:date) && (?releaseDate < '{0}-12-31'^^xsd:date))", 2012);
-            ;
 
             string queryPattern =
                 "PREFIX xsd: <http://www.w3.org/2001/XMLSchema#> " +
