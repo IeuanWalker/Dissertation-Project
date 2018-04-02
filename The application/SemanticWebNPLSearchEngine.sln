@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DissertationOriginal.Tests"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{22B61D9E-D167-4F09-A33B-71449997FD71}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Updated", "Updated", "{8E83F08D-0854-489E-89BA-3CC68BCCE804}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dissertation", "Dissertation\Dissertation.csproj", "{06707D8B-9B40-4AFB-8AD5-055589093F4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -23,12 +27,17 @@ Global
 		{12F4C800-AD8D-41CF-A266-7B7B08E37844}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{12F4C800-AD8D-41CF-A266-7B7B08E37844}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{12F4C800-AD8D-41CF-A266-7B7B08E37844}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06707D8B-9B40-4AFB-8AD5-055589093F4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06707D8B-9B40-4AFB-8AD5-055589093F4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06707D8B-9B40-4AFB-8AD5-055589093F4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06707D8B-9B40-4AFB-8AD5-055589093F4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{12F4C800-AD8D-41CF-A266-7B7B08E37844} = {22B61D9E-D167-4F09-A33B-71449997FD71}
+		{06707D8B-9B40-4AFB-8AD5-055589093F4C} = {8E83F08D-0854-489E-89BA-3CC68BCCE804}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {F31848FF-4D42-4DB3-BA9A-568682F7E49E}
